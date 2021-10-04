@@ -1,0 +1,56 @@
+@import '../mixins.scss';
+
+.header {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  &__wrapper {
+    width: 100%;
+    @include flexbox();
+  }
+  &__top {
+    padding: 20px 0px 20px 0px;
+    @include flexbox();
+    align-items: center;
+    width: 100%;
+    a {
+      color: #fff;
+    }
+  }
+  &__bottom {
+    padding: 9px 20px 9px 20px;
+  }
+  &__list {
+    @include flexbox();
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+    }
+    li {
+      margin: 0 25px 0 0px;
+      font-weight: 500;
+      font-size: 15px;
+      a {
+        &:hover {
+          transition: all 0.3s;
+          color: #b80000 !important;
+        }
+      }
+    }
+  }
+  &__left {
+    @include flexbox();
+    align-items: center;
+    flex: 1 1 auto;
+  }
+  &__title {
+    font-size: 26px;
+    font-weight: 600;
+    padding-right: 30px;
+    @media (max-width: 500px) {
+      font-size: 26px;
+    }
+  }
+}

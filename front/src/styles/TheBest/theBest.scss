@@ -1,0 +1,24 @@
+@import '../mixins.scss';
+
+.theBest {
+  padding-top: 20px;
+  &__title {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: left;
+    color: #000;
+    margin-bottom: 25px;
+  }
+  &__row {
+    @include flexbox();
+    flex-wrap: wrap;
+  }
+  &__column {
+    margin-bottom: 20px;
+    &--big {
+      flex: 0 1 50%;
+    }
+    flex: 0 1 25%;
+  }
+}

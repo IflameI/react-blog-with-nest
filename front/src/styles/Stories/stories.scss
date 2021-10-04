@@ -1,0 +1,73 @@
+@import '../mixins.scss';
+
+.stories {
+  color: #fff;
+  padding-top: 40px;
+  &__container {
+    max-width: 1300px;
+  }
+  &__row {
+    @include flexbox();
+    margin: 0 -10px;
+  }
+  &__column {
+    flex: 0 1 50%;
+    padding: 0 10px;
+  }
+  &__items {
+    @include flexbox();
+    margin: 0 -10px;
+  }
+  &__item {
+    padding: 0 10px;
+    flex: 0 1 50%;
+    &:hover {
+      .stories__suptitle {
+        transition: all 0.3s;
+        color: #b80000;
+      }
+    }
+  }
+  &__wrap {
+    margin-bottom: 15px;
+  }
+  &__img {
+    img {
+      object-fit: cover;
+    }
+  }
+  &__title {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: left;
+    color: #000;
+    margin-bottom: 25px;
+  }
+  &__suptitle {
+    color: #000;
+    font-weight: 700;
+    max-width: 420px;
+    padding-top: 10px;
+    line-height: 1.2;
+    font-size: 15px;
+  }
+  &__infoItem {
+    color: #000;
+    @include flexbox();
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  &__infoTitle {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  &__infoSupTitle {
+    line-height: 1.1;
+  }
+  &__info {
+    max-width: 600px;
+  }
+}
