@@ -14,6 +14,12 @@ const users_module_1 = require("./users/users.module");
 const roles_module_1 = require("./roles/roles.module");
 const roles_model_1 = require("./roles/roles.model");
 const user_roles_model_1 = require("./roles/user-roles.model");
+const auth_module_1 = require("./auth/auth.module");
+const posts_module_1 = require("./posts/posts.module");
+const posts_model_1 = require("./posts/posts.model");
+const files_module_1 = require("./files/files.module");
+const serve_static_1 = require("@nestjs/serve-static");
+const path = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -21,6 +27,9 @@ AppModule = __decorate([
         controllers: [],
         providers: [],
         imports: [
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: path.resolve(__dirname, 'static'),
+            }),
             sequelize_1.SequelizeModule.forRoot({
                 dialect: 'postgres',
                 host: 'localhost',
@@ -28,11 +37,14 @@ AppModule = __decorate([
                 username: 'postgres',
                 password: 'root',
                 database: 'reactBlog',
-                models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles],
+                models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles, posts_model_1.Post],
                 autoLoadModels: true,
             }),
             users_module_1.UsersModule,
             roles_module_1.RolesModule,
+            auth_module_1.AuthModule,
+            posts_module_1.PostsModule,
+            files_module_1.FilesModule,
         ],
     })
 ], AppModule);

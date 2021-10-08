@@ -1,4 +1,5 @@
 import { Model } from 'sequelize-typescript';
+import { Post } from 'src/posts/posts.model';
 import { Role } from 'src/roles/roles.model';
 interface UserCreationAttrs {
     email: string;
@@ -11,5 +12,6 @@ export declare class User extends Model<User, UserCreationAttrs> {
     banned: boolean;
     banReason: string;
     roles: Role[];
+    posts: Post[];
 }
 export {};
