@@ -1,9 +1,9 @@
-import { stories } from './stories';
+import { user } from './user';
 
 import { combineReducers } from 'redux';
 
 export const rootReducer = combineReducers({
-  stories,
+  user,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

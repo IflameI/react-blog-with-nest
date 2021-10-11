@@ -1,7 +1,9 @@
 import { Burger } from '..';
 import { NavLink } from 'react-router-dom';
+import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
 
 const MainHeader: React.FC = () => {
+  const { isAuth } = useTypedSelector((state) => state.user);
   return (
     <header className='header'>
       <div className='container'>
@@ -15,9 +17,15 @@ const MainHeader: React.FC = () => {
             </div>
             <div className='header__right'>
               <div className='header__button'>
-                <NavLink to='/auth/register'>
-                  <button className='btn'>Регистрация / вход</button>
-                </NavLink>
+                {!isAuth ? (
+                  <NavLink to='/auth/register'>
+                    <button className='btn'>Регистрация / вход</button>
+                  </NavLink>
+                ) : (
+                  <NavLink to='/auth/logout'>
+                    <button className='btn'>Выход</button>
+                  </NavLink>
+                )}
               </div>
             </div>
           </div>

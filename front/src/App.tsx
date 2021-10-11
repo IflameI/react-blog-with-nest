@@ -1,9 +1,11 @@
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 
 import { Header } from './components';
 import { Login, MainPage, Register, Story } from './pages';
+import { useTypedSelector } from './redux/typeHooks/useTypedSelector';
 
 function App() {
+  const { isAuth } = useTypedSelector((state) => state.user);
   return (
     <>
       <Header />
@@ -11,12 +13,12 @@ function App() {
         <Route exact path='/'>
           <MainPage />
         </Route>
-        <Route exact path='/auth/login'>
-          <Login />
-        </Route>
-        <Route exact path='/auth/register'>
-          <Register />
-        </Route>
+        <Route
+          exact
+          path='/auth/register'
+          render={() => (isAuth ? <Redirect to='/' /> : <Register />)}
+        />
+        <Route exact path='/auth/login' render={() => (isAuth ? <Redirect to='/' /> : <Login />)} />
         <Route exact path='/story/:storyId'>
           <Story />
         </Route>
