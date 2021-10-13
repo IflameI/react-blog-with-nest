@@ -5,7 +5,7 @@ export type userDataType = {
 
 export interface userState {
   data: null | userDataType;
-  token: string;
+  token: string | null;
   isAuth: boolean;
   loading: boolean;
 }
@@ -13,13 +13,17 @@ export interface userState {
 export enum userActionsType {
   SET_IS_AUTH = 'SET_IS_AUTH',
   SET_USER_DATA_PENDING = 'SET_USER_DATA_PENDING',
-  SET_USER_DATA_SUCCESS = 'SET_USER_DATA_SUCCESS',
   SET_USER_TOKEN = 'SET_USER_TOKEN',
+  SET_USER_LOGOUT = 'SET_USER_LOGOUT',
 }
 
 interface setUserIsAuthType {
   type: userActionsType.SET_IS_AUTH;
   payload: boolean;
+}
+
+interface setUserLogoutAuthType {
+  type: userActionsType.SET_USER_LOGOUT;
 }
 
 interface setUserDataPendingType {
@@ -28,16 +32,11 @@ interface setUserDataPendingType {
 
 interface setUserTokenType {
   type: userActionsType.SET_USER_TOKEN;
-  payload: string;
-}
-
-interface setUserDataSuccessType {
-  type: userActionsType.SET_USER_DATA_SUCCESS;
-  payload: any;
+  payload: string | null;
 }
 
 export type userActions =
   | setUserDataPendingType
   | setUserIsAuthType
-  | setUserDataSuccessType
-  | setUserTokenType;
+  | setUserTokenType
+  | setUserLogoutAuthType;

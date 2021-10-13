@@ -29,3 +29,11 @@ export const fetchUserLogin = (postData: userDataType) => {
     }
   };
 };
+
+export const setUserLogout = () => {
+  return async (dispatch: Dispatch<userActions>) => {
+    dispatch({ type: userActionsType.SET_IS_AUTH, payload: false });
+    dispatch({ type: userActionsType.SET_USER_TOKEN, payload: null });
+    window.localStorage.removeItem('Bearer');
+  };
+};

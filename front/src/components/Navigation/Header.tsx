@@ -1,8 +1,10 @@
 import { Burger } from '..';
 import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
+import { useActions } from '../../redux/typeHooks/useActions';
 
 const MainHeader: React.FC = () => {
+  const { setUserLogout } = useActions();
   const { isAuth } = useTypedSelector((state) => state.user);
   return (
     <header className='header'>
@@ -22,9 +24,9 @@ const MainHeader: React.FC = () => {
                     <button className='btn'>Регистрация / вход</button>
                   </NavLink>
                 ) : (
-                  <NavLink to='/auth/logout'>
-                    <button className='btn'>Выход</button>
-                  </NavLink>
+                  <button onClick={() => setUserLogout()} className='btn'>
+                    Выход
+                  </button>
                 )}
               </div>
             </div>

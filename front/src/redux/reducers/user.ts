@@ -9,14 +9,6 @@ const initialState: userState = {
 
 export const user = (state = initialState, action: userActions): userState => {
   switch (action.type) {
-    case userActionsType.SET_USER_DATA_SUCCESS:
-      return {
-        ...state,
-        data: action.payload,
-        isAuth: true,
-        token: window.localStorage.Bearer,
-        loading: false,
-      };
     case userActionsType.SET_IS_AUTH:
       return {
         ...state,
@@ -26,6 +18,10 @@ export const user = (state = initialState, action: userActions): userState => {
       return {
         ...state,
         token: action.payload,
+      };
+    case userActionsType.SET_USER_LOGOUT:
+      return {
+        ...state,
       };
     default:
       return state;
