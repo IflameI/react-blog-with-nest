@@ -8,6 +8,7 @@ export type mainPostsType = {
 
 export interface postState {
   mainPosts: mainPostsType[];
+  isLoaded: boolean;
 }
 
 export enum postActionsType {

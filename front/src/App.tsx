@@ -19,9 +19,7 @@ function App() {
           render={() => (isAuth ? <Redirect to='/' /> : <Register />)}
         />
         <Route exact path='/auth/login' render={() => (isAuth ? <Redirect to='/' /> : <Login />)} />
-        <Route exact path='/story/:storyId'>
-          <Story />
-        </Route>
+        <Route exact path='/article/:article' component={Story} />
       </Switch>
     </>
   );

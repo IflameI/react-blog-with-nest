@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { MainContentColumn } from '..';
+import { Loader, MainContentColumn } from '..';
 import { useActions } from '../../redux/typeHooks/useActions';
 import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
+import { mainPostsType } from '../../redux/types/postTypeRedux';
 
 const MainContent: React.FC = () => {
-  const { mainPosts } = useTypedSelector((state) => state.post);
+  const { mainPosts, isLoaded } = useTypedSelector((state) => state.post);
   const { fetchTopArticles } = useActions();
 
   useEffect(() => {
@@ -13,9 +14,13 @@ const MainContent: React.FC = () => {
   return (
     <section className='mainContent'>
       <div className='mainContent__row'>
-        {mainPosts.map((item, index) => (
-          <MainContentColumn link={`article/${item.id}`} img={item.image} title={item.title} />
-        ))}
+        {isLoaded ? (
+          mainPosts.map((item: mainPostsType) => (
+            <MainContentColumn link={`article/${item.id}`} img={item.image} title={item.title} />
+          ))
+        ) : (
+          <Loader />
+        )}
       </div>
     </section>
   );

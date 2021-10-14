@@ -27,7 +27,7 @@ __decorate([
 ], Post.prototype, "title", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ example: 'Описание поста', description: 'Содержание поста' }),
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.TEXT, allowNull: false }),
     __metadata("design:type", String)
 ], Post.prototype, "content", void 0);
 __decorate([

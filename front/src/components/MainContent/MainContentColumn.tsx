@@ -21,7 +21,7 @@ const MainContentColumn: React.FC<IMainContentColumn> = ({
       <NavLink to={link}>
         <div
           style={{
-            backgroundImage: `url(localhost:5000/${img})`,
+            backgroundImage: `url(${img})`,
           }}
           className={classNames('mainContent__item', {
             'mainContent__item--small': smallHeight,

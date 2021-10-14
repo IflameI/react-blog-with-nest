@@ -2,6 +2,7 @@ import { postActions, postActionsType, postState } from '../types/postTypeRedux'
 
 const initialState: postState = {
   mainPosts: [],
+  isLoaded: false,
 };
 
 export const post = (state = initialState, action: postActions): postState => {
@@ -10,6 +11,7 @@ export const post = (state = initialState, action: postActions): postState => {
       return {
         ...state,
         mainPosts: action.payload,
+        isLoaded: true,
       };
     default:
       return state;

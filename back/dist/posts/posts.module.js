@@ -10,7 +10,6 @@ exports.PostsModule = void 0;
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 const auth_module_1 = require("../auth/auth.module");
-const files_module_1 = require("../files/files.module");
 const roles_module_1 = require("../roles/roles.module");
 const users_model_1 = require("../users/users.model");
 const posts_controller_1 = require("./posts.controller");
@@ -22,12 +21,7 @@ PostsModule = __decorate([
     (0, common_1.Module)({
         providers: [posts_service_1.PostsService],
         controllers: [posts_controller_1.PostsController],
-        imports: [
-            sequelize_1.SequelizeModule.forFeature([users_model_1.User, posts_model_1.Post]),
-            files_module_1.FilesModule,
-            roles_module_1.RolesModule,
-            (0, common_1.forwardRef)(() => auth_module_1.AuthModule),
-        ],
+        imports: [sequelize_1.SequelizeModule.forFeature([users_model_1.User, posts_model_1.Post]), roles_module_1.RolesModule, (0, common_1.forwardRef)(() => auth_module_1.AuthModule)],
     })
 ], PostsModule);
 exports.PostsModule = PostsModule;

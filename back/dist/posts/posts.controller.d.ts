@@ -3,5 +3,6 @@ import { PostsService } from './posts.service';
 export declare class PostsController {
     private postService;
     constructor(postService: PostsService);
-    createPost(dto: CreatePostDto, image: any): Promise<import("./posts.model").Post>;
+    create(dto: CreatePostDto): Promise<import("./posts.model").Post>;
+    getAll(): Promise<import("./posts.model").Post[]>;
 }

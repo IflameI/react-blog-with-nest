@@ -3,6 +3,7 @@ export { default as NavSite } from './Navigation/NavSite';
 
 export { default as Burger } from './helpers/Burger/Burger';
 export { default as ArticleItem } from './helpers/ArticleItem';
+export { default as Loader } from './helpers/Loader';
 
 export { default as MainContent } from './MainContent/MainContent';
 export { default as MainContentColumn } from './MainContent/MainContentColumn';

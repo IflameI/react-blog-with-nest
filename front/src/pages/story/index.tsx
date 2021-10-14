@@ -1,4 +1,5 @@
-const InternalStory = () => {
+const InternalStory = ({ match }: any) => {
+  console.log(match.params.article);
   return (
     <section className='internalStory'>
       <div className='container'>

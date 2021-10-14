@@ -14,27 +14,39 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostsController = void 0;
 const common_1 = require("@nestjs/common");
-const platform_express_1 = require("@nestjs/platform-express");
+const swagger_1 = require("@nestjs/swagger");
 const create_post_dto_1 = require("./dto/create-post.dto");
 const posts_service_1 = require("./posts.service");
 let PostsController = class PostsController {
     constructor(postService) {
         this.postService = postService;
     }
-    createPost(dto, image) {
-        return this.postService.create(dto, image);
+    create(dto) {
+        return this.postService.createPost(dto);
+    }
+    getAll() {
+        return this.postService.getTopThreeArticle();
     }
 };
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Создание статьи' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: common_1.Post }),
     (0, common_1.Post)(),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image')),
     __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_post_dto_1.CreatePostDto, Object]),
+    __metadata("design:paramtypes", [create_post_dto_1.CreatePostDto]),
     __metadata("design:returntype", void 0)
-], PostsController.prototype, "createPost", null);
+], PostsController.prototype, "create", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить 3 статьи' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: [common_1.Post] }),
+    (0, common_1.Get)('/top-articles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "getAll", null);
 PostsController = __decorate([
+    (0, swagger_1.ApiTags)('Статьи'),
     (0, common_1.Controller)('posts'),
     __metadata("design:paramtypes", [posts_service_1.PostsService])
 ], PostsController);

@@ -16,22 +16,27 @@ exports.PostsService = void 0;
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 const posts_model_1 = require("./posts.model");
-const files_service_1 = require("../files/files.service");
 let PostsService = class PostsService {
-    constructor(postRepository, fileService) {
+    constructor(postRepository) {
         this.postRepository = postRepository;
-        this.fileService = fileService;
     }
-    async create(dto, image) {
-        const fileName = await this.fileService.createFile(image);
-        const post = await this.postRepository.create(Object.assign(Object.assign({}, dto), { image: fileName }));
+    async createPost(dto) {
+        const post = await this.postRepository.create(dto);
+        return post;
+    }
+    async getTopThreeArticle() {
+        const posts = await this.postRepository.findAll({ include: { all: true } });
+        return posts;
+    }
+    async getPostById(id) {
+        const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
         return post;
     }
 };
 PostsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, sequelize_1.InjectModel)(posts_model_1.Post)),
-    __metadata("design:paramtypes", [Object, files_service_1.FilesService])
+    __metadata("design:paramtypes", [Object])
 ], PostsService);
 exports.PostsService = PostsService;
 //# sourceMappingURL=posts.service.js.map
