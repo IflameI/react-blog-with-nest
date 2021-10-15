@@ -7,6 +7,7 @@ interface PostCreationAttrs {
   content: string;
   userId: number;
   image: string;
+  views: number;
 }
 
 @Table({ tableName: 'posts' })
@@ -26,6 +27,14 @@ export class Post extends Model<Post, PostCreationAttrs> {
   @ApiProperty({ example: 'Название изображения', description: 'Название изображения' })
   @Column({ type: DataType.STRING })
   image: string;
+
+  @ApiProperty({ example: '141', description: 'Количество просмотров' })
+  @Column({ type: DataType.NUMBER })
+  views: string;
+
+  @ApiProperty({ example: '141', description: 'Количество лайков' })
+  @Column({ type: DataType.NUMBER })
+  likes: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

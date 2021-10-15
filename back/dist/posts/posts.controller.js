@@ -24,8 +24,17 @@ let PostsController = class PostsController {
     create(dto) {
         return this.postService.createPost(dto);
     }
-    getAll() {
-        return this.postService.getTopThreeArticle();
+    getThreeArticles() {
+        return this.postService.getThreeArticles();
+    }
+    getRecentArticles() {
+        return this.postService.getRecentArticles();
+    }
+    getSortArticlesByViews() {
+        return this.postService.getSortArticlesByViews();
+    }
+    getSortArticlesByLikes() {
+        return this.postService.getSortArticlesByLikes();
     }
 };
 __decorate([
@@ -40,11 +49,35 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Получить 3 статьи' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: [common_1.Post] }),
-    (0, common_1.Get)('/top-articles'),
+    (0, common_1.Get)('/threeArticles'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], PostsController.prototype, "getAll", null);
+], PostsController.prototype, "getThreeArticles", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить отсортированные по дате обновления' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: [common_1.Post] }),
+    (0, common_1.Get)('/recentArticles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "getRecentArticles", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить статьи отсортированные по популярности' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: [common_1.Post] }),
+    (0, common_1.Get)('/popularArticles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "getSortArticlesByViews", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить статьи отсортированные по лайкам' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: [common_1.Post] }),
+    (0, common_1.Get)('/mostLikesArticles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "getSortArticlesByLikes", null);
 PostsController = __decorate([
     (0, swagger_1.ApiTags)('Статьи'),
     (0, common_1.Controller)('posts'),

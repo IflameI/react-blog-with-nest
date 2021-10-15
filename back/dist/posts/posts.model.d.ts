@@ -5,12 +5,15 @@ interface PostCreationAttrs {
     content: string;
     userId: number;
     image: string;
+    views: number;
 }
 export declare class Post extends Model<Post, PostCreationAttrs> {
     id: number;
     title: string;
     content: string;
     image: string;
+    views: string;
+    likes: string;
     userId: number;
     author: User;
 }

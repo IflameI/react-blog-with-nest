@@ -17,8 +17,29 @@ export class PostsController {
 
   @ApiOperation({ summary: 'Получить 3 статьи' })
   @ApiResponse({ status: 200, type: [Post] })
-  @Get('/top-articles')
-  getAll() {
-    return this.postService.getTopThreeArticle();
+  @Get('/threeArticles')
+  getThreeArticles() {
+    return this.postService.getThreeArticles();
+  }
+
+  @ApiOperation({ summary: 'Получить отсортированные по дате обновления' })
+  @ApiResponse({ status: 200, type: [Post] })
+  @Get('/recentArticles')
+  getRecentArticles() {
+    return this.postService.getRecentArticles();
+  }
+
+  @ApiOperation({ summary: 'Получить статьи отсортированные по популярности' })
+  @ApiResponse({ status: 200, type: [Post] })
+  @Get('/popularArticles')
+  getSortArticlesByViews() {
+    return this.postService.getSortArticlesByViews();
+  }
+
+  @ApiOperation({ summary: 'Получить статьи отсортированные по лайкам' })
+  @ApiResponse({ status: 200, type: [Post] })
+  @Get('/mostLikesArticles')
+  getSortArticlesByLikes() {
+    return this.postService.getSortArticlesByLikes();
   }
 }

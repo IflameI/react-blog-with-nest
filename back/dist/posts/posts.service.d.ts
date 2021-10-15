@@ -4,6 +4,9 @@ export declare class PostsService {
     private postRepository;
     constructor(postRepository: typeof Post);
     createPost(dto: CreatePostDto): Promise<Post>;
-    getTopThreeArticle(): Promise<Post[]>;
+    getThreeArticles(): Promise<Post[]>;
+    getRecentArticles(): Promise<Post[]>;
+    getSortArticlesByViews(): Promise<Post[]>;
+    getSortArticlesByLikes(): Promise<Post[]>;
     getPostById(id: number): Promise<Post>;
 }

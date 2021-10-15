@@ -56,5 +56,9 @@
     z-index: 1;
     line-height: 1.1;
     font-weight: 500;
+    text-overflow: ellipsis;
+    width: 610px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }

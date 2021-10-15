@@ -36,6 +36,15 @@
       object-fit: cover;
     }
   }
+  &__imgMini {
+    img {
+      object-fit: cover;
+    }
+  }
+  &__time {
+    max-width: 100px;
+    line-height: 1.1;
+  }
   &__title {
     text-transform: uppercase;
     font-size: 22px;
@@ -66,6 +75,10 @@
   }
   &__infoSupTitle {
     line-height: 1.1;
+    text-overflow: ellipsis;
+    width: 610px;
+    white-space: nowrap;
+    overflow: hidden;
   }
   &__info {
     max-width: 600px;

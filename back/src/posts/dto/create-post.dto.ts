@@ -3,4 +3,6 @@ export class CreatePostDto {
   readonly content: string;
   readonly userId: number;
   readonly image: string;
+  readonly views: number;
+  readonly likes: number;
 }

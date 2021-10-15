@@ -36,6 +36,16 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "image", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: '141', description: 'Количество просмотров' }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.NUMBER }),
+    __metadata("design:type", String)
+], Post.prototype, "views", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: '141', description: 'Количество лайков' }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.NUMBER }),
+    __metadata("design:type", String)
+], Post.prototype, "likes", void 0);
+__decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => users_model_1.User),
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER }),
     __metadata("design:type", Number)

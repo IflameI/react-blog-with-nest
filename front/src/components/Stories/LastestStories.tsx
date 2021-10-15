@@ -1,63 +1,33 @@
-import { InfoItem } from '..';
+import { useEffect } from 'react';
+
+import { InfoItem, Loader } from '..';
+import { useActions } from '../../redux/typeHooks/useActions';
+import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
 
 const LastestStories: React.FC = () => {
+  const { recentPosts, isLoaded } = useTypedSelector((state) => state.post);
+  const { fetchRecentArticles } = useActions();
+
+  useEffect(() => {
+    fetchRecentArticles();
+  }, []);
+
   return (
     <div className='stories__column'>
       <div className='stories__title'>LATEST STORIES</div>
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
-      <InfoItem
-        infoTitle='The best weighted blankets for 2021'
-        infoSupTitle='Bearaby, Yaasa, Layla and more: These are the best weighted blankets for faux cuddles.'
-        time='1 hr ago'
-        img='https://www.cnet.com/a/img/voGpZau9b2-frqqePoxC5BQXN30=/84x84/2021/04/19/a88dfe22-91dd-494d-ad5d-756b7b3aa7a3/img-4859.jpg'
-      />
+      {isLoaded ? (
+        recentPosts.map((item, index) => (
+          <InfoItem
+            key={`${index}__${item.title}`}
+            infoTitle={item.title}
+            infoSupTitle={item.content}
+            img={item.image}
+            time={item.updatedAt}
+          />
+        ))
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
