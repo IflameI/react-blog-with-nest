@@ -1,4 +1,4 @@
-import { MainContent, Stories, TheBest, Trending } from '../components';
+import { MainContent, Stories, TheBest } from '../components';
 
 const MainPage: React.FC = () => {
   return (
@@ -6,7 +6,6 @@ const MainPage: React.FC = () => {
       <MainContent />
       <Stories />
       <TheBest />
-      <Trending />
     </>
   );
 };

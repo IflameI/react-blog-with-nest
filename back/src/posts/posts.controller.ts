@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostsService } from './posts.service';
@@ -41,5 +41,12 @@ export class PostsController {
   @Get('/mostLikesArticles')
   getSortArticlesByLikes() {
     return this.postService.getSortArticlesByLikes();
+  }
+
+  @ApiOperation({ summary: 'Получить статью по id' })
+  @ApiResponse({ status: 200, type: Post })
+  @Get('arcticle/:id')
+  getArticleById(@Param('id') id: number) {
+    return this.postService.getArticleById(id);
   }
 }

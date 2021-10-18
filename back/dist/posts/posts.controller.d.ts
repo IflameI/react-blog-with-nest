@@ -8,4 +8,5 @@ export declare class PostsController {
     getRecentArticles(): Promise<import("./posts.model").Post[]>;
     getSortArticlesByViews(): Promise<import("./posts.model").Post[]>;
     getSortArticlesByLikes(): Promise<import("./posts.model").Post[]>;
+    getArticleById(id: number): Promise<import("./posts.model").Post>;
 }

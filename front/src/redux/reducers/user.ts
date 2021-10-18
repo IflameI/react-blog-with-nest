@@ -4,7 +4,6 @@ const initialState: userState = {
   data: null,
   token: window.localStorage.Bearer,
   isAuth: window.localStorage.Bearer ? true : false,
-  loading: false,
 };
 
 export const user = (state = initialState, action: userActions): userState => {
@@ -19,9 +18,10 @@ export const user = (state = initialState, action: userActions): userState => {
         ...state,
         token: action.payload,
       };
-    case userActionsType.SET_USER_LOGOUT:
+    case userActionsType.SET_USER_DATA:
       return {
         ...state,
+        data: action.payload,
       };
     default:
       return state;

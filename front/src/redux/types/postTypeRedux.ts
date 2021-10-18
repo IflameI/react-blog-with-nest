@@ -13,7 +13,17 @@ export interface postState {
   recentPosts: mainPostsType[];
   popularPosts: mainPostsType[];
   mostLikesPosts: mainPostsType[];
-  isLoaded: boolean;
+  currentPost: {
+    id: number | null;
+    title: string;
+    content: string;
+    image: string;
+    userId: number | null;
+    createdAt: Date | null;
+    updatedAt: string | null;
+    views: number;
+    likes: number;
+  };
 }
 
 export enum postActionsType {
@@ -21,6 +31,8 @@ export enum postActionsType {
   SET_RECENT_POSTS = 'SET_RECENT_POSTS',
   SET_POPULAR_POSTS = 'SET_POPULAR_POSTS',
   SET_MOST_LIKES_POSTS = 'SET_MOST_LIKES_POSTS',
+  SET_CURRENT_POST = 'SET_CURRENT_POST',
+  SET_POST_LOADING = 'SET_POST_LOADING',
 }
 
 interface setMainPostsType {
@@ -43,8 +55,24 @@ interface setMostLikesPostsType {
   payload: mainPostsType[];
 }
 
+interface setCurrentPostType {
+  type: postActionsType.SET_CURRENT_POST;
+  payload: {
+    id: number | null;
+    title: string;
+    content: string;
+    image: string;
+    userId: number | null;
+    createdAt: Date | null;
+    updatedAt: string | null;
+    views: number;
+    likes: number;
+  };
+}
+
 export type postActions =
   | setMainPostsType
   | setRecentPostsType
   | setPopularPostsType
-  | setMostLikesPostsType;
+  | setMostLikesPostsType
+  | setCurrentPostType;

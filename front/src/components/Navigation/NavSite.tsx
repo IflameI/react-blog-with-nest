@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
 
 interface INavSite {
   open: boolean;

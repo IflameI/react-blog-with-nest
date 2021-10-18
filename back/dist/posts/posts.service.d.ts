@@ -8,5 +8,5 @@ export declare class PostsService {
     getRecentArticles(): Promise<Post[]>;
     getSortArticlesByViews(): Promise<Post[]>;
     getSortArticlesByLikes(): Promise<Post[]>;
-    getPostById(id: number): Promise<Post>;
+    getArticleById(id: number): Promise<Post>;
 }

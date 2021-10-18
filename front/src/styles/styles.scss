@@ -66,7 +66,6 @@ body {
 @import 'MainContent/mainContent';
 @import 'Stories/stories';
 @import 'TheBest/theBest';
-@import 'Trending/trending';
 
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 //<ОСНОВНОЙ БЛОК>====================================================================================================
@@ -300,5 +299,88 @@ h6 {
   100% {
     opacity: 0;
   }
+}
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: #b8000030;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include flexbox();
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+  @include anim(0.3s, 0s);
+  &__content {
+    border-radius: 12px;
+    background-color: white;
+    @include anim(0.3s, 0s);
+    transform: scale(0.5);
+    min-width: 450px;
+    min-height: 150px;
+    &.active {
+      transform: scale(1);
+    }
+    @media (max-width: 500px) {
+      min-width: 320px;
+    }
+    z-index: 1;
+  }
+  &__item {
+    padding: 40px;
+    color: #000;
+    @media (max-width: 500px) {
+      padding: 20px;
+    }
+  }
+  &__top {
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #b80000;
+  }
+  &__wrap {
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    input {
+      border: 1px solid #b80000;
+      height: 25px;
+      border-radius: 4px;
+      width: 100%;
+      margin-bottom: 10px;
+      padding-left: 10px;
+    }
+    textarea {
+      border: 1px solid #b80000;
+      border-radius: 4px;
+      resize: none;
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+      padding: 10px 0px 0px 10px;
+    }
+  }
+  &__footer {
+    button {
+      width: 100%;
+      background: #b80000;
+      border: 1px solid #b80000;
+      &:hover {
+        background: #b80000;
+        color: #fff;
+      }
+    }
+  }
+}
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
 }
 //</ОСНОВНОЙ БЛОК>====================================================================================================

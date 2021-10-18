@@ -10,6 +10,13 @@
   &__wrapper {
     width: 100%;
     @include flexbox();
+    padding: 0 110px;
+    @media (max-width: 767px) {
+      padding: 0 50px;
+    }
+    @media (max-width: 500px) {
+      padding: 0 30px;
+    }
   }
   &__top {
     padding: 20px 0px 20px 0px;
@@ -50,7 +57,15 @@
     font-weight: 600;
     padding-right: 30px;
     @media (max-width: 500px) {
-      font-size: 26px;
+      font-size: 23px;
+    }
+  }
+  &__right {
+    display: flex;
+  }
+  &__button {
+    &:first-child {
+      padding-right: 10px;
     }
   }
 }

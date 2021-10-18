@@ -10,4 +10,5 @@ export declare class UsersController {
     getAll(): Promise<User[]>;
     addRole(dto: AddRoleDto): Promise<AddRoleDto>;
     ban(dto: BanUserDto): Promise<User>;
+    getInfoMe(email: string): Promise<User>;
 }

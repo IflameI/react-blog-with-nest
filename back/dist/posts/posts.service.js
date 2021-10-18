@@ -64,7 +64,7 @@ let PostsService = class PostsService {
         });
         return sortPostsByLikes;
     }
-    async getPostById(id) {
+    async getArticleById(id) {
         const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
         return post;
     }

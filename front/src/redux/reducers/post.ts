@@ -5,7 +5,17 @@ const initialState: postState = {
   recentPosts: [],
   popularPosts: [],
   mostLikesPosts: [],
-  isLoaded: false,
+  currentPost: {
+    title: '',
+    content: '',
+    createdAt: null,
+    updatedAt: null,
+    id: null,
+    image: '',
+    likes: 0,
+    userId: null,
+    views: 0,
+  },
 };
 
 export const post = (state = initialState, action: postActions): postState => {
@@ -14,25 +24,26 @@ export const post = (state = initialState, action: postActions): postState => {
       return {
         ...state,
         mainPosts: action.payload,
-        isLoaded: true,
       };
     case postActionsType.SET_RECENT_POSTS:
       return {
         ...state,
         recentPosts: action.payload,
-        isLoaded: true,
       };
     case postActionsType.SET_POPULAR_POSTS:
       return {
         ...state,
         popularPosts: action.payload,
-        isLoaded: true,
       };
     case postActionsType.SET_MOST_LIKES_POSTS:
       return {
         ...state,
         mostLikesPosts: action.payload,
-        isLoaded: true,
+      };
+    case postActionsType.SET_CURRENT_POST:
+      return {
+        ...state,
+        currentPost: action.payload,
       };
     default:
       return state;

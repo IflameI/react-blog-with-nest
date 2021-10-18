@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards, UsePipes } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/auth/roles-auth-decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
@@ -44,5 +44,12 @@ export class UsersController {
   @Post('/ban')
   ban(@Body() dto: BanUserDto) {
     return this.usersService.ban(dto);
+  }
+
+  @ApiOperation({ summary: 'Получить информацию о текущем авторизированном юзере' })
+  @ApiResponse({ status: 200 })
+  @Get('/me/:email')
+  getInfoMe(@Param('email') email: string) {
+    return this.usersService.getUserByEmail(email);
   }
 }

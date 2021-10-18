@@ -1,18 +1,34 @@
 .mainContent {
   position: relative;
   padding-top: 78px;
+  z-index: 0;
   &__row {
     @include flexbox();
+    @media (max-width: 1600px) {
+      flex-wrap: wrap;
+    }
   }
   &__column {
     &:first-child {
       flex: 0 1 50%;
+      @media (max-width: 1600px) {
+        flex: 0 1 100%;
+      }
       .mainContent__title {
         font-size: 50px;
+        @media (max-width: 767px) {
+          font-size: 28px;
+        }
       }
     }
 
     flex: 0 1 25%;
+    @media (max-width: 1600px) {
+      flex: 0 1 50%;
+    }
+    @media (max-width: 992px) {
+      flex: 0 1 100%;
+    }
   }
   &__item {
     background: #000;
@@ -26,6 +42,9 @@
     position: relative;
     &--small {
       min-height: 300px;
+    }
+    @media (max-width: 767px) {
+      min-height: 500px;
     }
     &:hover {
       .mainContent__title,
@@ -60,5 +79,8 @@
     width: 610px;
     white-space: nowrap;
     overflow: hidden;
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
 }

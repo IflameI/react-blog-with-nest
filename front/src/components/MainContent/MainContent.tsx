@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Loader, MainContentColumn } from '..';
 import { useActions } from '../../redux/typeHooks/useActions';
@@ -6,13 +6,16 @@ import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
 import { mainPostsType } from '../../redux/types/postTypeRedux';
 
 const MainContent: React.FC = () => {
-  const { mainPosts, isLoaded } = useTypedSelector((state) => state.post);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const { mainPosts } = useTypedSelector((state) => state.post);
   const { fetchThreeArticles } = useActions();
 
   useEffect(() => {
     fetchThreeArticles();
   }, []);
-
+  if (mainPosts[0] && isLoaded !== true) {
+    setIsLoaded(true);
+  }
   return (
     <section className='mainContent'>
       <div className='mainContent__row'>

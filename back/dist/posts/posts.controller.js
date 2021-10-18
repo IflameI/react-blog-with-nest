@@ -36,6 +36,9 @@ let PostsController = class PostsController {
     getSortArticlesByLikes() {
         return this.postService.getSortArticlesByLikes();
     }
+    getArticleById(id) {
+        return this.postService.getArticleById(id);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Создание статьи' }),
@@ -78,6 +81,15 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PostsController.prototype, "getSortArticlesByLikes", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить статью по id' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: common_1.Post }),
+    (0, common_1.Get)('arcticle/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "getArticleById", null);
 PostsController = __decorate([
     (0, swagger_1.ApiTags)('Статьи'),
     (0, common_1.Controller)('posts'),

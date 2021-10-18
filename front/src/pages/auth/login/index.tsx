@@ -8,7 +8,7 @@ type Inputs = {
 };
 
 const Login = () => {
-  const { fetchUserLogin } = useActions();
+  const { fetchUserLogin, fetchInfoAboutMe } = useActions();
   const history = useHistory();
 
   const {
@@ -19,6 +19,7 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     fetchUserLogin(data);
+    fetchInfoAboutMe(data.email);
     history.push('/');
   };
   return (

@@ -46,3 +46,14 @@ export const fetchMostLikesArticles = () => {
     }
   };
 };
+
+export const fetchCurrentArticle = (id: number) => {
+  return async (dispatch: Dispatch<postActions>) => {
+    try {
+      const response = await axios.get(`/posts/arcticle/${id}`);
+      dispatch({ type: postActionsType.SET_CURRENT_POST, payload: response.data });
+    } catch (e: any) {
+      console.log(e);
+    }
+  };
+};
