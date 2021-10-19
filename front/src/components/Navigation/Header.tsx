@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Modal } from '..';
 import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
@@ -7,19 +7,27 @@ import { useActions } from '../../redux/typeHooks/useActions';
 
 type createArticleType = {
   title: string;
+  author: string;
   content: string;
-  img: string;
+  image: string;
 };
 
 const MainHeader: React.FC = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [createArticle, setCreateArticle] = useState<createArticleType>({
     title: '',
+    author: '',
     content: '',
-    img: '',
+    image: '',
   });
-  const { setUserLogout } = useActions();
+  const { setUserLogout, createPost } = useActions();
   const { isAuth } = useTypedSelector((state) => state.user);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    createPost(createArticle);
+    setModalActive(false);
+  };
 
   return (
     <header className='header'>
@@ -56,7 +64,7 @@ const MainHeader: React.FC = () => {
         <div className='modal__item'>
           <div className='modal__top'>Создание статьи</div>
           <div className='modal__body'>
-            <form className='modal__form'>
+            <form onSubmit={handleSubmit} className='modal__form'>
               <div className='modal__wrap'>
                 <label>Заголовок статьи</label>
                 <input
@@ -65,6 +73,18 @@ const MainHeader: React.FC = () => {
                     setCreateArticle((prevState) => ({
                       ...prevState,
                       title: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+              <div className='modal__wrap'>
+                <label>Имя автора</label>
+                <input
+                  value={createArticle.author}
+                  onChange={(e) =>
+                    setCreateArticle((prevState) => ({
+                      ...prevState,
+                      author: e.target.value,
                     }))
                   }
                 />
@@ -84,11 +104,11 @@ const MainHeader: React.FC = () => {
               <div className='modal__wrap'>
                 <label>Ссылка на картину для статьи</label>
                 <input
-                  value={createArticle.img}
+                  value={createArticle.image}
                   onChange={(e) =>
                     setCreateArticle((prevState) => ({
                       ...prevState,
-                      img: e.target.value,
+                      image: e.target.value,
                     }))
                   }
                 />

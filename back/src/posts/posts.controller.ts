@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostsService } from './posts.service';
@@ -11,6 +11,7 @@ export class PostsController {
   @ApiOperation({ summary: 'Создание статьи' })
   @ApiResponse({ status: 200, type: Post })
   @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
   create(@Body() dto: CreatePostDto) {
     return this.postService.createPost(dto);
   }

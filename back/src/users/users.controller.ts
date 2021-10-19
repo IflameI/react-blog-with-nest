@@ -46,10 +46,5 @@ export class UsersController {
     return this.usersService.ban(dto);
   }
 
-  @ApiOperation({ summary: 'Получить информацию о текущем авторизированном юзере' })
-  @ApiResponse({ status: 200 })
-  @Get('/me/:email')
-  getInfoMe(@Param('email') email: string) {
-    return this.usersService.getUserByEmail(email);
-  }
+
 }

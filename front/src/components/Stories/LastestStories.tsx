@@ -11,7 +11,7 @@ const LastestStories: React.FC = () => {
 
   useEffect(() => {
     fetchRecentArticles();
-  }, []);
+  }, [recentPosts.length]);
 
   if (recentPosts[0] && isLoaded !== true) {
     setIsLoaded(true);

@@ -27,7 +27,7 @@ export const fetchUserLogin = (postData: userDataType) => {
       }
       return response;
     } catch (e: any) {
-      console.log(e);
+      console.warn('Произошла ошибка при авторизации ' + e);
     }
   };
 };
@@ -37,17 +37,5 @@ export const setUserLogout = () => {
     dispatch({ type: userActionsType.SET_IS_AUTH, payload: false });
     dispatch({ type: userActionsType.SET_USER_TOKEN, payload: null });
     window.localStorage.removeItem('Bearer');
-  };
-};
-
-export const fetchInfoAboutMe = (email: string) => {
-  return async (dispatch: Dispatch<userActions>) => {
-    try {
-      const response = await axios.get(`/users/me/${email}`);
-      dispatch({ type: userActionsType.SET_USER_DATA, payload: response.data });
-      return response;
-    } catch (e: any) {
-      console.log(e);
-    }
   };
 };

@@ -1,11 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Table, Model, Column, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { User } from 'src/users/users.model';
 
 interface PostCreationAttrs {
   title: string;
   content: string;
-  userId: number;
+  author: string;
   image: string;
   views: number;
 }
@@ -36,10 +35,7 @@ export class Post extends Model<Post, PostCreationAttrs> {
   @Column({ type: DataType.NUMBER })
   likes: string;
 
-  @ForeignKey(() => User)
-  @Column({ type: DataType.INTEGER })
-  userId: number;
-
-  @BelongsTo(() => User)
-  author: User;
+  @ApiProperty({ example: 'Author', description: 'Автор статьи' })
+  @Column({ type: DataType.STRING })
+  author: string;
 }

@@ -1,9 +1,8 @@
 import { Model } from 'sequelize-typescript';
-import { User } from 'src/users/users.model';
 interface PostCreationAttrs {
     title: string;
     content: string;
-    userId: number;
+    author: string;
     image: string;
     views: number;
 }
@@ -14,7 +13,6 @@ export declare class Post extends Model<Post, PostCreationAttrs> {
     image: string;
     views: string;
     likes: string;
-    userId: number;
-    author: User;
+    author: string;
 }
 export {};

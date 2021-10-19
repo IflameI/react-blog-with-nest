@@ -18,11 +18,6 @@ export const user = (state = initialState, action: userActions): userState => {
         ...state,
         token: action.payload,
       };
-    case userActionsType.SET_USER_DATA:
-      return {
-        ...state,
-        data: action.payload,
-      };
     default:
       return state;
   }

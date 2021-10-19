@@ -1,9 +1,17 @@
+export type postInfo = {
+  title: string;
+  content: string;
+  image: string;
+  author: string;
+  views: number;
+  likes: number;
+};
+
 export type mainPostsType = {
   id: number;
   title: string;
   content: string;
   image: string;
-  userId: number;
   createdAt: Date;
   updatedAt: string;
 };
@@ -17,8 +25,8 @@ export interface postState {
     id: number | null;
     title: string;
     content: string;
+    author: string;
     image: string;
-    userId: number | null;
     createdAt: Date | null;
     updatedAt: string | null;
     views: number;
@@ -33,6 +41,7 @@ export enum postActionsType {
   SET_MOST_LIKES_POSTS = 'SET_MOST_LIKES_POSTS',
   SET_CURRENT_POST = 'SET_CURRENT_POST',
   SET_POST_LOADING = 'SET_POST_LOADING',
+  SET_CREATE_POST = 'SET_CREATE_POST',
 }
 
 interface setMainPostsType {
@@ -61,6 +70,7 @@ interface setCurrentPostType {
     id: number | null;
     title: string;
     content: string;
+    author: string;
     image: string;
     userId: number | null;
     createdAt: Date | null;
@@ -70,9 +80,15 @@ interface setCurrentPostType {
   };
 }
 
+interface setCreatePostType {
+  type: postActionsType.SET_CREATE_POST;
+  payload: any;
+}
+
 export type postActions =
   | setMainPostsType
   | setRecentPostsType
   | setPopularPostsType
   | setMostLikesPostsType
-  | setCurrentPostType;
+  | setCurrentPostType
+  | setCreatePostType;

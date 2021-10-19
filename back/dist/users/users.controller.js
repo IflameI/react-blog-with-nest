@@ -39,9 +39,6 @@ let UsersController = class UsersController {
     ban(dto) {
         return this.usersService.ban(dto);
     }
-    getInfoMe(email) {
-        return this.usersService.getUserByEmail(email);
-    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Создание пользователя' }),
@@ -84,15 +81,6 @@ __decorate([
     __metadata("design:paramtypes", [ban_user_dto_1.BanUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "ban", null);
-__decorate([
-    (0, swagger_1.ApiOperation)({ summary: 'Получить информацию о текущем авторизированном юзере' }),
-    (0, swagger_1.ApiResponse)({ status: 200 }),
-    (0, common_1.Get)('/me/:email'),
-    __param(0, (0, common_1.Param)('email')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "getInfoMe", null);
 UsersController = __decorate([
     (0, swagger_1.ApiTags)('Пользователи'),
     (0, common_1.Controller)('users'),

@@ -46,10 +46,6 @@ __decorate([
     (0, sequelize_typescript_1.BelongsToMany)(() => roles_model_1.Role, () => user_roles_model_1.UserRoles),
     __metadata("design:type", Array)
 ], User.prototype, "roles", void 0);
-__decorate([
-    (0, sequelize_typescript_1.HasMany)(() => posts_model_1.Post),
-    __metadata("design:type", Array)
-], User.prototype, "posts", void 0);
 User = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'users' })
 ], User);

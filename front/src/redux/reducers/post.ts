@@ -8,12 +8,12 @@ const initialState: postState = {
   currentPost: {
     title: '',
     content: '',
+    author: '',
     createdAt: null,
     updatedAt: null,
     id: null,
     image: '',
     likes: 0,
-    userId: null,
     views: 0,
   },
 };
@@ -44,6 +44,11 @@ export const post = (state = initialState, action: postActions): postState => {
       return {
         ...state,
         currentPost: action.payload,
+      };
+    case postActionsType.SET_CREATE_POST:
+      return {
+        ...state,
+        recentPosts: [...state.recentPosts, action.payload],
       };
     default:
       return state;

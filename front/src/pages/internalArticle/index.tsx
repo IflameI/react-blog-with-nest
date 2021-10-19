@@ -16,6 +16,9 @@ const InternalStory = ({ match }: any) => {
         <h1 className='internalStory__title'>{currentPost.title}</h1>
         <div className='internalStory__info'>
           <div className='internalStory__views'>
+            Author: <span>{currentPost.author}</span>
+          </div>
+          <div className='internalStory__views'>
             Views: <span>{currentPost.views}</span>
           </div>
           <div className='internalStory__views'>

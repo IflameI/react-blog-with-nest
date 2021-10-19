@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { Dispatch } from 'redux';
-import { postActions, postActionsType } from '../../types/postTypeRedux';
+import { postActions, postActionsType, postInfo } from '../../types/postTypeRedux';
 
 export const fetchThreeArticles = () => {
   return async (dispatch: Dispatch<postActions>) => {
@@ -9,7 +9,7 @@ export const fetchThreeArticles = () => {
       const response = await axios.get('/posts/threeArticles');
       dispatch({ type: postActionsType.SET_MAIN_POSTS, payload: response.data });
     } catch (e: any) {
-      console.log(e);
+      console.warn('Произошла ошибка при получении 3 главных статей' + e);
     }
   };
 };
@@ -20,7 +20,7 @@ export const fetchRecentArticles = () => {
       const response = await axios.get('/posts/recentArticles');
       dispatch({ type: postActionsType.SET_RECENT_POSTS, payload: response.data });
     } catch (e: any) {
-      console.log(e);
+      console.warn('Произошла ошибка при получении последних статей' + e);
     }
   };
 };
@@ -42,7 +42,7 @@ export const fetchMostLikesArticles = () => {
       const response = await axios.get('/posts/mostLikesArticles');
       dispatch({ type: postActionsType.SET_MOST_LIKES_POSTS, payload: response.data });
     } catch (e: any) {
-      console.log(e);
+      console.warn('Произошла ошибка при получении наиболее залайконных статей' + e);
     }
   };
 };
@@ -53,7 +53,18 @@ export const fetchCurrentArticle = (id: number) => {
       const response = await axios.get(`/posts/arcticle/${id}`);
       dispatch({ type: postActionsType.SET_CURRENT_POST, payload: response.data });
     } catch (e: any) {
-      console.log(e);
+      console.warn('Произошла ошибка при получении выбранной статьи' + e);
+    }
+  };
+};
+
+export const createPost = (postData: any) => {
+  return async (dispatch: Dispatch<postActions>) => {
+    try {
+      const response = await axios.post('/posts', postData);
+      dispatch({ type: postActionsType.SET_CREATE_POST, payload: response.data });
+    } catch (e: any) {
+      console.warn('Произошла ошибка при создании статитьи' + e);
     }
   };
 };
