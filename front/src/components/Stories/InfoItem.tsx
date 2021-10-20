@@ -1,5 +1,4 @@
 import { formatDistanceToNow } from 'date-fns';
-import ruLocale from 'date-fns/locale/ru';
 import { NavLink } from 'react-router-dom';
 
 interface IInfoItem {
@@ -11,7 +10,7 @@ interface IInfoItem {
 }
 
 const InfoItem: React.FC<IInfoItem> = ({ img, infoSupTitle, infoTitle, time, link }) => {
-  const transformTime = formatDistanceToNow(new Date(time), { addSuffix: true, locale: ruLocale });
+  const transformTime = formatDistanceToNow(new Date(time), { addSuffix: true });
   return (
     <NavLink to={link}>
       <div className='stories__infoItem'>

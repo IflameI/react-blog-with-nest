@@ -88,6 +88,7 @@
     max-width: 100px;
     line-height: 1.1;
     padding-right: 5px;
+    width: 80px;
     @media (max-width: 1600px) {
       display: none;
     }
@@ -118,6 +119,10 @@
     margin-bottom: 10px;
     @media (max-width: 992px) {
       margin-bottom: 30px;
+    }
+    &:hover {
+      color: #b80000;
+      @include anim(0.3s, 0s);
     }
   }
   &__infoTitle {
