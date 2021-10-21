@@ -4,11 +4,15 @@ import { useTypedSelector } from '../../redux/typeHooks/useTypedSelector';
 
 const InternalStory = ({ match }: any) => {
   const { currentPost } = useTypedSelector((state) => state.post);
-  const { fetchCurrentArticle } = useActions();
-
+  const { fetchCurrentArticle, incrementLike } = useActions();
+  const currentIdPost: number = match.params.article;
   useEffect(() => {
-    fetchCurrentArticle(match.params.article);
-  }, []);
+    fetchCurrentArticle(currentIdPost);
+  }, [currentPost.likes]);
+
+  const handleIncrementLike = () => {
+    incrementLike(currentIdPost);
+  };
 
   return (
     <section className='internalStory'>
@@ -21,7 +25,7 @@ const InternalStory = ({ match }: any) => {
           Views: <span>{currentPost.views}</span>
         </div>
         <div className='internalStory__views'>
-          Likes: <span>{currentPost.likes}</span>
+          Likes: <span onClick={handleIncrementLike}>{currentPost.likes}</span>
         </div>
       </div>
       <div className='internalStory__image'>

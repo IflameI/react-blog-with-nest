@@ -68,6 +68,12 @@ let PostsService = class PostsService {
         const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
         return post;
     }
+    async incrementLikeCounter(id) {
+        const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
+        post.likes = post.likes + 1;
+        await post.save();
+        return post;
+    }
 };
 PostsService = __decorate([
     (0, common_1.Injectable)(),

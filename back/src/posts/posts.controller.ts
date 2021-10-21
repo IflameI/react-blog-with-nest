@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostsService } from './posts.service';
@@ -18,28 +18,28 @@ export class PostsController {
 
   @ApiOperation({ summary: 'Получить 3 статьи' })
   @ApiResponse({ status: 200, type: [Post] })
-  @Get('/threeArticles')
+  @Get('threeArticles')
   getThreeArticles() {
     return this.postService.getThreeArticles();
   }
 
   @ApiOperation({ summary: 'Получить отсортированные по дате обновления' })
   @ApiResponse({ status: 200, type: [Post] })
-  @Get('/recentArticles')
+  @Get('recentArticles')
   getRecentArticles() {
     return this.postService.getRecentArticles();
   }
 
   @ApiOperation({ summary: 'Получить статьи отсортированные по популярности' })
   @ApiResponse({ status: 200, type: [Post] })
-  @Get('/popularArticles')
+  @Get('popularArticles')
   getSortArticlesByViews() {
     return this.postService.getSortArticlesByViews();
   }
 
   @ApiOperation({ summary: 'Получить статьи отсортированные по лайкам' })
   @ApiResponse({ status: 200, type: [Post] })
-  @Get('/mostLikesArticles')
+  @Get('mostLikesArticles')
   getSortArticlesByLikes() {
     return this.postService.getSortArticlesByLikes();
   }
@@ -49,5 +49,11 @@ export class PostsController {
   @Get('arcticle/:id')
   getArticleById(@Param('id') id: number) {
     return this.postService.getArticleById(id);
+  }
+
+  @ApiOperation({ summary: 'Поставить лайка на запись' })
+  @Put('like/:id')
+  like(@Param('id') id: number) {
+    return this.postService.incrementLikeCounter(id);
   }
 }

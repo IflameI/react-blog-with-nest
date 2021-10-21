@@ -50,6 +50,11 @@ export const post = (state = initialState, action: postActions): postState => {
         ...state,
         recentPosts: [...state.recentPosts, action.payload],
       };
+    case postActionsType.SET_INCREMENT_LIKE:
+      return {
+        ...state,
+        currentPost: action.payload,
+      };
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { Dispatch } from 'redux';
-import { postActions, postActionsType, postInfo } from '../../types/postTypeRedux';
+import { postActions, postActionsType } from '../../types/postTypeRedux';
 
 export const fetchThreeArticles = () => {
   return async (dispatch: Dispatch<postActions>) => {
@@ -64,7 +64,18 @@ export const createPost = (postData: any) => {
       const response = await axios.post('/posts', postData);
       dispatch({ type: postActionsType.SET_CREATE_POST, payload: response.data });
     } catch (e: any) {
-      console.warn('Произошла ошибка при создании статитьи' + e);
+      console.warn('Произошла ошибка при создании статьи' + e);
+    }
+  };
+};
+
+export const incrementLike = (id: number) => {
+  return async (dispatch: Dispatch<postActions>) => {
+    try {
+      const response = await axios.put(`/posts/like/${id}`);
+      dispatch({ type: postActionsType.SET_INCREMENT_LIKE, payload: response.data });
+    } catch (e: any) {
+      console.warn('Произошла ошибка при постановке лайка' + e);
     }
   };
 };

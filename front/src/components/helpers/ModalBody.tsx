@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { Dispatcher } from '../../globalTypes/setActionType';
 import { useActions } from '../../redux/typeHooks/useActions';
 
@@ -6,79 +7,77 @@ interface IModalBody {
   setModalActive: Dispatcher<boolean>;
 }
 
-type createArticleType = {
+type Inputs = {
   title: string;
-  author: string;
+  name: string;
   content: string;
   image: string;
 };
 
 const ModalBody: React.FC<IModalBody> = ({ setModalActive }) => {
   const { createPost } = useActions();
-  const [createArticle, setCreateArticle] = useState<createArticleType>({
-    title: '',
-    author: '',
-    content: '',
-    image: '',
-  });
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    createPost(createArticle);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    createPost(data);
     setModalActive(false);
+    reset();
   };
   return (
     <div className='modal__body'>
-      <form onSubmit={handleSubmit} className='modal__form'>
+      <form onSubmit={handleSubmit(onSubmit)} className='modal__form'>
         <div className='modal__wrap'>
-          <label>Заголовок статьи</label>
+          <label>Article title</label>
           <input
-            value={createArticle.title}
-            onChange={(e) =>
-              setCreateArticle((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }))
-            }
+            {...register('title', {
+              required: true,
+            })}
           />
+          {errors.title && errors.title.type === 'required' && (
+            <span className='auth__error'>This field is required</span>
+          )}
         </div>
         <div className='modal__wrap'>
-          <label>Имя автора</label>
+          <label>Author's name</label>
           <input
-            value={createArticle.author}
-            onChange={(e) =>
-              setCreateArticle((prevState) => ({
-                ...prevState,
-                author: e.target.value,
-              }))
-            }
+            {...register('name', {
+              required: true,
+            })}
           />
+          {errors.name && errors.name.type === 'required' && (
+            <span className='auth__error'>This field is required</span>
+          )}
         </div>
         <div className='modal__wrap'>
-          <label>Содержание статьи</label>
+          <label>The content of the article</label>
           <textarea
-            value={createArticle.content}
-            onChange={(e) =>
-              setCreateArticle((prevState) => ({
-                ...prevState,
-                content: e.target.value,
-              }))
-            }
+            {...register('content', {
+              required: true,
+            })}
           />
+          {errors.content && errors.content.type === 'required' && (
+            <span className='auth__error'>This field is required</span>
+          )}
         </div>
         <div className='modal__wrap'>
-          <label>Ссылка на картину для статьи</label>
+          <label>Link to picture for article</label>
           <input
-            value={createArticle.image}
-            onChange={(e) =>
-              setCreateArticle((prevState) => ({
-                ...prevState,
-                image: e.target.value,
-              }))
-            }
+            {...register('image', {
+              required: true,
+            })}
           />
+          {errors.image && errors.image.type === 'required' && (
+            <span className='auth__error'>This field is required</span>
+          )}
         </div>
         <div className='modal__footer'>
-          <button className='btn'>Отправить статью</button>
+          <button className='btn'>Submit an article</button>
         </div>
       </form>
     </div>

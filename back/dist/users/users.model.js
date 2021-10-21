@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const sequelize_typescript_1 = require("sequelize-typescript");
-const posts_model_1 = require("../posts/posts.model");
 const roles_model_1 = require("../roles/roles.model");
 const user_roles_model_1 = require("../roles/user-roles.model");
 let User = class User extends sequelize_typescript_1.Model {
