@@ -59,11 +59,4 @@ export class PostsService {
     const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
     return post;
   }
-
-  async incrementLikeCounter(id: number) {
-    const post = await this.postRepository.findOne({ where: { id }, include: { all: true } });
-    post.likes = post.likes + 1;
-    await post.save();
-    return post;
-  }
 }

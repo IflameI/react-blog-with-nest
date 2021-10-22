@@ -8,7 +8,7 @@ type Inputs = {
   password: string;
 };
 
-const RegisterItem = () => {
+const RegisterItem: React.FC = () => {
   const { fetchUserRegister } = useActions();
   const history = useHistory();
 

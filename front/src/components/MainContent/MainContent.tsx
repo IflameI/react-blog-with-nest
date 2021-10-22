@@ -13,6 +13,7 @@ const MainContent: React.FC = () => {
   useEffect(() => {
     fetchThreeArticles();
   }, []);
+
   if (mainPosts[0] && isLoaded !== true) {
     setIsLoaded(true);
   }
@@ -22,8 +23,13 @@ const MainContent: React.FC = () => {
         {isLoaded ? (
           mainPosts
             .slice(0, 3)
-            .map((item: mainPostsType) => (
-              <MainContentColumn link={`article/${item.id}`} img={item.image} title={item.title} />
+            .map((item: mainPostsType, index: number) => (
+              <MainContentColumn
+                key={`${item.title}__${index}`}
+                link={`article/${item.id}`}
+                img={item.image}
+                title={item.title}
+              />
             ))
         ) : (
           <Loader />

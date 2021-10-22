@@ -33,7 +33,6 @@ export enum postActionsType {
   SET_CURRENT_POST = 'SET_CURRENT_POST',
   SET_POST_LOADING = 'SET_POST_LOADING',
   SET_CREATE_POST = 'SET_CREATE_POST',
-  SET_INCREMENT_LIKE = 'SET_INCREMENT_LIKE',
 }
 
 interface setMainPostsType {
@@ -77,27 +76,10 @@ interface setCreatePostType {
   payload: any;
 }
 
-interface setIncrementLikePostType {
-  type: postActionsType.SET_INCREMENT_LIKE;
-  payload: {
-    id: number | null;
-    title: string;
-    content: string;
-    author: string;
-    image: string;
-    userId: number | null;
-    createdAt: Date | null;
-    updatedAt: string | null;
-    views: number;
-    likes: number;
-  };
-}
-
 export type postActions =
   | setMainPostsType
   | setRecentPostsType
   | setPopularPostsType
   | setMostLikesPostsType
   | setCurrentPostType
-  | setCreatePostType
-  | setIncrementLikePostType;
+  | setCreatePostType;

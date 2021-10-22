@@ -8,7 +8,7 @@ type Inputs = {
   password: string;
 };
 
-const LoginItem = () => {
+const LoginItem: React.FC = () => {
   const { fetchUserLogin } = useActions();
   const history = useHistory();
 

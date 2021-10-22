@@ -3,6 +3,12 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { userActions, userActionsType, userDataType } from '../../types/userTypeRedux';
 
+type loginUserResponse = {
+  data: {
+    token: string;
+  };
+};
+
 export const fetchUserRegister = (postData: userDataType) => {
   return async () => {
     try {
@@ -19,14 +25,14 @@ export const fetchUserRegister = (postData: userDataType) => {
 export const fetchUserLogin = (postData: userDataType) => {
   return async (dispatch: Dispatch<userActions>) => {
     try {
-      const response: any = await axios.post('/auth/login', postData);
+      const response: loginUserResponse = await axios.post('/auth/login', postData);
       dispatch({ type: userActionsType.SET_IS_AUTH, payload: true });
       dispatch({ type: userActionsType.SET_USER_TOKEN, payload: response.data.token });
       window.localStorage.setItem('Bearer', response.data.token);
       if (window.localStorage.Bearer === response.data.token) {
       }
       return response;
-    } catch (e: any) {
+    } catch (e) {
       console.warn('Произошла ошибка при авторизации ' + e);
     }
   };

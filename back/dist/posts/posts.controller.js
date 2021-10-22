@@ -39,9 +39,6 @@ let PostsController = class PostsController {
     getArticleById(id) {
         return this.postService.getArticleById(id);
     }
-    like(id) {
-        return this.postService.incrementLikeCounter(id);
-    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Создание статьи' }),
@@ -94,14 +91,6 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], PostsController.prototype, "getArticleById", null);
-__decorate([
-    (0, swagger_1.ApiOperation)({ summary: 'Поставить лайка на запись' }),
-    (0, common_1.Put)('like/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], PostsController.prototype, "like", null);
 PostsController = __decorate([
     (0, swagger_1.ApiTags)('Статьи'),
     (0, common_1.Controller)('posts'),

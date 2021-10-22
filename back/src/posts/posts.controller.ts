@@ -51,9 +51,4 @@ export class PostsController {
     return this.postService.getArticleById(id);
   }
 
-  @ApiOperation({ summary: 'Поставить лайка на запись' })
-  @Put('like/:id')
-  like(@Param('id') id: number) {
-    return this.postService.incrementLikeCounter(id);
-  }
 }

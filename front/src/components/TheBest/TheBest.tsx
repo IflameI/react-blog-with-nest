@@ -21,10 +21,10 @@ const TheBest: React.FC = () => {
       <div className='theBest__row'>
         {isLoaded ? (
           <>
-            {' '}
             <div className='theBest__column theBest__column--big'>
-              {mostLikesPosts.slice(0, 1).map((item, index) => (
+              {mostLikesPosts.slice(0, 1).map((item, index: number) => (
                 <MainContentColumn
+                  key={`${item.title}__${index}`}
                   link={`article/${item.id}`}
                   img={item.image}
                   title={item.title}
@@ -33,8 +33,8 @@ const TheBest: React.FC = () => {
                 />
               ))}
             </div>
-            {mostLikesPosts.slice(1, 7).map((item, index) => (
-              <div className='theBest__column'>
+            {mostLikesPosts.slice(1, 7).map((item, index: number) => (
+              <div className='theBest__column' key={`${index}__${item.title}`}>
                 <ArticleItem
                   link={`article/${item.id}`}
                   img={item.image}

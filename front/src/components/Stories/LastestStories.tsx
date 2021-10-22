@@ -22,7 +22,7 @@ const LastestStories: React.FC = () => {
       {isLoaded ? (
         recentPosts
           .slice(0, 8)
-          .map((item, index) => (
+          .map((item, index: number) => (
             <InfoItem
               key={`${index}__${item.title}`}
               infoTitle={item.title}

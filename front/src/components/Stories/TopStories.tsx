@@ -22,8 +22,9 @@ const TopStories: React.FC = () => {
       {isLoaded ? (
         <>
           <div className='stories__wrap'>
-            {popularPosts.slice(0, 1).map((item, index) => (
+            {popularPosts.slice(0, 1).map((item, index: number) => (
               <MainContentColumn
+                key={`${item.title}__${index}`}
                 link={`article/${item.id}`}
                 img={item.image}
                 title={item.title}
@@ -33,8 +34,9 @@ const TopStories: React.FC = () => {
             ))}
           </div>
           <div className='stories__items'>
-            {popularPosts.slice(1, 3).map((item, index) => (
+            {popularPosts.slice(1, 3).map((item, index: number) => (
               <ArticleItem
+                key={`${item.title}__${index}`}
                 heightImg='300px'
                 img={item.image}
                 link={`article/${item.id}`}
