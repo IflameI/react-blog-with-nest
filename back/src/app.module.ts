@@ -12,23 +12,36 @@ import { Post } from './posts/posts.model';
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
+import { ConfigModule } from '@nestjs/config';
+import { join } from 'path';
 
 @Module({
   controllers: [],
   providers: [],
   imports: [
-    ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname, 'static'),
+    ConfigModule.forRoot({
+      envFilePath: `.env`,
     }),
+
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'build'),
+    }),
+
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'root',
-      database: 'reactBlog',
+      host: process.env.POSTGRES_HOST,
+      port: Number(process.env.POSTGRESS_PORT),
+      username: process.env.POSTGRES_USERNAME,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
       models: [User, Role, UserRoles, Post],
       autoLoadModels: true,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
     }),
     UsersModule,
     RolesModule,

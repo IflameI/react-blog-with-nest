@@ -11,8 +11,8 @@ export declare class Post extends Model<Post, PostCreationAttrs> {
     title: string;
     content: string;
     image: string;
-    views: string;
-    likes: string;
+    views: number;
+    likes: number;
     author: string;
 }
 export {};

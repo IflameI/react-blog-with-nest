@@ -6,7 +6,7 @@ const app_module_1 = require("./app.module");
 const validation_pipe_1 = require("./pipes/validation.pipe");
 async function start() {
     const PORT = process.env.PORT || 3000;
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, { cors: true });
     const config = new swagger_1.DocumentBuilder()
         .setTitle('ReactJSBlog')
         .setDescription('Документация REST API')

@@ -28,12 +28,12 @@ export class Post extends Model<Post, PostCreationAttrs> {
   image: string;
 
   @ApiProperty({ example: '141', description: 'Количество просмотров' })
-  @Column({ type: DataType.NUMBER })
-  views: string;
+  @Column({ type: DataType.INTEGER })
+  views: number;
 
   @ApiProperty({ example: '141', description: 'Количество лайков' })
-  @Column({ type: DataType.NUMBER })
-  likes: string;
+  @Column({ type: DataType.INTEGER })
+  likes: number;
 
   @ApiProperty({ example: 'Author', description: 'Автор статьи' })
   @Column({ type: DataType.STRING })
