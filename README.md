@@ -1,5 +1,3 @@
-# react-blog-with-nest
-
 🎆react-blog-with-nest
 
 <a href = 'https://react-js-blog-nest.herokuapp.com/'>View Demo</a>
