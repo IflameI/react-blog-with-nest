@@ -43,12 +43,6 @@ AppModule = __decorate([
                 database: process.env.POSTGRES_DATABASE,
                 models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles, posts_model_1.Post],
                 autoLoadModels: true,
-                dialectOptions: {
-                    ssl: {
-                        require: true,
-                        rejectUnauthorized: false,
-                    },
-                },
             }),
             users_module_1.UsersModule,
             roles_module_1.RolesModule,

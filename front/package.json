@@ -3,29 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@loadable/component": "^5.16.2",
+    "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.27",
+    "@types/node": "^20.10.5",
     "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
     "@types/react-redux": "^7.1.18",
-    "@types/react-router-dom": "^5.3.0",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^0.22.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^9.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.17.2",
-    "react-redux": "^7.2.5",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "redux": "^4.1.1",
-    "redux-thunk": "^2.3.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^6.21.1",
+    "compose-function": "^3.0.3",
+    "react-scripts": "5.0.1",
+    "redux": "^4.0.5",
     "sass": "^1.42.1",
-    "typescript": "^4.4.3",
+    "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -53,5 +55,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/compose-function": "^0.0.33",
+    "@types/loadable__component": "^5.13.8"
+  }
 }
