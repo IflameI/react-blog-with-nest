@@ -1,13 +1,32 @@
-import RegisterItem from './RegisterItem';
+import {RegisterForm} from "../../features/register";
+import {useDispatch, useSelector} from "react-redux";
+import {selectIsUserAuthSucceeded} from "../../entities/user/model/selectors/user.selectors";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {clearState} from "../../entities/user/model/reducers/user";
 
 const Register = () => {
-  return (
-    <section className='register'>
-      <div className='register__wrap'>
-        <RegisterItem />
-      </div>
-    </section>
-  );
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const isAuthSuccess = useSelector(selectIsUserAuthSucceeded)
+
+    useEffect(() => {
+        if (isAuthSuccess) {
+            navigate('/login')
+        }
+        return () => {
+            dispatch(clearState())
+        }
+    }, [dispatch, isAuthSuccess, navigate])
+
+
+    return (
+            <section className='auth'>
+                <div className='auth__wrap'>
+                    <RegisterForm/>
+                </div>
+            </section>
+    );
 };
 
 export default Register;

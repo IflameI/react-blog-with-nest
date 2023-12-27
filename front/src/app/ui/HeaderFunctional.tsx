@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {selectUserIsAuth} from "../../entities/user/model/selectors/user.selectors";
-import {UserActions} from "../../entities/user/model/actions";
+import {logout} from "../../entities/user/model/reducers/user";
 
 const HeaderFunctional: React.FC = () => {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const HeaderFunctional: React.FC = () => {
     const [modalActive, setModalActive] = useState<boolean>(false);
 
     const onClickLogoutButton = () => {
-        dispatch(UserActions.logoutUser)
+        dispatch(logout())
     }
 
     return (

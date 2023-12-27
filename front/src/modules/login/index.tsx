@@ -1,13 +1,26 @@
-import LoginItem from './LoginItem';
+import {LoginForm} from "../../features/login";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {selectUserIsAuth} from "../../entities/user/model/selectors/user.selectors";
 
 const Login = () => {
-  return (
-    <section className='register'>
-      <div className='register__wrap'>
-        <LoginItem />
-      </div>
-    </section>
-  );
+    const navigate = useNavigate();
+    const isAuth = useSelector(selectUserIsAuth)
+
+    useEffect(() => {
+        if (isAuth) {
+            navigate('/')
+        }
+    }, [isAuth, navigate])
+
+    return (
+            <section className='auth'>
+                <div className='auth__wrap'>
+                    <LoginForm/>
+                </div>
+            </section>
+    );
 };
 
 export default Login;

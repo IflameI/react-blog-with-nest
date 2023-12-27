@@ -1,5 +1,5 @@
-import {userState} from "../../../redux/types/userTypeRedux";
 import {store} from "../store";
+import {rootReducer} from "../reducers";
 
 export enum StoreEnum {
     USER = 'user',
@@ -7,7 +7,4 @@ export enum StoreEnum {
 }
 
 export type AppDispatch = typeof store.dispatch
-
-export interface RootState {
-    [StoreEnum.USER]: userState;
-}
+export type RootState = ReturnType<typeof rootReducer>

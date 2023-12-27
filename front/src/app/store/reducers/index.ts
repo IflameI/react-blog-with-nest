@@ -1,10 +1,12 @@
-import {combineReducers, Reducer} from "@reduxjs/toolkit";
-import {RootState, StoreEnum} from "../model/store.model";
-import {user} from "../../../entities/user/model/reducers/user";
+import {combineReducers} from "@reduxjs/toolkit";
+import {StoreEnum} from "../model/store.model";
+import {postApi} from "../../../entities/post/model/services/postApi";
+import user from "../../../entities/user/model/reducers/user";
 
 
-export const rootReducer: Reducer<RootState> = combineReducers({
+export const rootReducer = combineReducers({
     [StoreEnum.USER]: user,
+    [postApi.reducerPath]: postApi.reducer,
 });
 
 

@@ -3,12 +3,16 @@ import {FormProvider, SubmitHandler, useForm} from 'react-hook-form';
 
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {registerUser} from "../../../entities/user/model/services/userApi";
+import {loginUser} from "../../../entities/user/model/services/userApi";
 import {selectIsUserAuthLoading} from "../../../entities/user/model/selectors/user.selectors";
-import {AuthForm, Inputs} from "../../../entities/auth";
+import {AuthForm} from "../../../entities/auth";
 
+type Inputs = {
+    email: string;
+    password: string;
+};
 
-export const RegisterForm: React.FC = () => {
+export const LoginForm: React.FC = () => {
     const dispatch = useDispatch()
 
     const authLoading = useSelector(selectIsUserAuthLoading)
@@ -26,21 +30,21 @@ export const RegisterForm: React.FC = () => {
     } = methods;
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        dispatch(registerUser(data));
+        dispatch(loginUser(data));
     };
 
     return (
             <div className='auth__item'>
-                <h1 className='auth__title'>Registration</h1>
+                <h1 className='auth__title'>Sign in</h1>
                 <div className='auth__form'>
                     <form onSubmit={handleSubmit(onSubmit)} className='auth__body'>
                         <FormProvider {...methods}>
-                            <AuthForm loading={authLoading} buttonText='Register'/>
+                            <AuthForm loading={authLoading} buttonText='Login'/>
                         </FormProvider>
                     </form>
                     <div className='auth__note'>
-                        Already have an account?
-                        <NavLink to='/login'>Sign in to your account</NavLink>
+                        Don't have an account?
+                        <NavLink to='/register'>Register now</NavLink>
                     </div>
                 </div>
             </div>

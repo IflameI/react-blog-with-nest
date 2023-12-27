@@ -21,8 +21,13 @@ let RolesService = class RolesService {
         this.roleRepository = roleRepository;
     }
     async createRole(dto) {
+        if ((await this.roleRepository.count()) > 0)
+            return;
         const role = await this.roleRepository.create(dto);
         return role;
+    }
+    async onModuleInit() {
+        await this.createRole({ value: 'USER', description: 'Стандартная роль пользователя' });
     }
     async getRoleByValue(value) {
         const role = await this.roleRepository.findOne({ where: { value } });
