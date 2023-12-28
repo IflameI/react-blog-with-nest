@@ -11,7 +11,7 @@ export const selectUserIsAuth = createSelector(
 
 export const selectUserToken = createSelector(
     selectUser,
-    (state) => state.token,
+    (state) => state.userData.token,
 );
 
 export const selectIsUserAuthSucceeded = createSelector(

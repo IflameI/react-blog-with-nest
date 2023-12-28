@@ -1,7 +1,7 @@
 import React from "react";
-import {useGetThreeArticlesQuery} from "../../../entities/post/model/services/postApi";
 import {Loader} from "../../../shared";
 import {ArticlePreview} from "../../../entities/article";
+import {useGetThreeArticlesQuery} from "../../../entities/article/model/services/articleApi";
 
 export const HeadlineNews: React.FC = () => {
     const {data: articles, isLoading} = useGetThreeArticlesQuery()

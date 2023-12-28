@@ -4,6 +4,7 @@ import {selectIsUserAuthSucceeded} from "../../entities/user/model/selectors/use
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {clearState} from "../../entities/user/model/reducers/user";
+import {RoutesLinkEnum} from "../../app/routes/model";
 
 const Register = () => {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ const Register = () => {
 
     useEffect(() => {
         if (isAuthSuccess) {
-            navigate('/login')
+            navigate(RoutesLinkEnum.Login)
         }
         return () => {
             dispatch(clearState())

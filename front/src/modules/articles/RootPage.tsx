@@ -1,9 +1,9 @@
 import React from "react";
+import {HeadlineNews} from "../../widgets/headlineNews";
 import {Stories} from "../../widgets/stories";
 import {TheBestArticles} from "../../widgets/bestArticles";
-import {HeadlineNews} from "../../widgets/headlineNews";
 
-const MainPage: React.FC = () => {
+export const RootPage: React.FC = () => {
     return (
             <>
                 <HeadlineNews/>
@@ -13,4 +13,3 @@ const MainPage: React.FC = () => {
     );
 };
 
-export default MainPage;

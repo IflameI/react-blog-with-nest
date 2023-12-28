@@ -1,7 +1,7 @@
 import React from 'react';
 import {Story} from "../../../entities/story";
 import {Loader} from "../../../shared";
-import {useGetRecentArticlesQuery} from "../../../entities/post/model/services/postApi";
+import {useGetRecentArticlesQuery} from "../../../entities/article/model/services/articleApi";
 
 export const LastStories: React.FC = () => {
     const {data: recentPosts, isLoading} = useGetRecentArticlesQuery()
@@ -12,14 +12,14 @@ export const LastStories: React.FC = () => {
                 {!isLoading && recentPosts ? (
                         recentPosts
                                 .slice(0, 8)
-                                .map((item, index) => (
+                                .map((article, index) => (
                                         <Story
-                                                key={`${index}__${item.title}`}
-                                                infoTitle={item.title}
-                                                infoSupTitle={item.content}
-                                                img={item.image}
-                                                time={item.updatedAt}
-                                                link={`article/${item.id}`}
+                                                key={`${index}__${article.title}`}
+                                                infoTitle={article.title}
+                                                infoSupTitle={article.content}
+                                                img={article.image}
+                                                time={article.updatedAt}
+                                                link={`article/${article.id}`}
                                         />
                                 ))
                 ) : (

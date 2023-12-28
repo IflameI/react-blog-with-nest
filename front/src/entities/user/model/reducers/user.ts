@@ -4,10 +4,12 @@ import {loginUser, registerUser} from "../services/userApi";
 import {LoadingStatusEnum} from "../../../../shared/model/config";
 
 const initialState: userState = {
-    data: null,
+    userData: {
+        token: window.localStorage.Bearer,
+        name: '',
+    },
     error: null,
     loading: LoadingStatusEnum.IDLE,
-    token: window.localStorage.Bearer,
     isAuth: !!window.localStorage.Bearer,
 };
 
@@ -17,14 +19,14 @@ const user = createSlice({
     reducers: {
         clearState(state) {
             state.isAuth = false
-            state.token = null
+            state.userData = {token: '', name: ''}
             state.error = null
             state.loading = LoadingStatusEnum.IDLE
         },
         logout(state) {
             localStorage.removeItem('Bearer')
             state.isAuth = false
-            state.token = null
+            state.userData = {token: '', name: ''}
             state.error = null
             state.loading = LoadingStatusEnum.IDLE
         },
@@ -48,7 +50,10 @@ const user = createSlice({
         })
         builder.addCase(loginUser.fulfilled, (state, action) => {
             if (action.payload) {
-                state.token = action.payload.token
+                state.userData = {
+                    token: action.payload.token,
+                    name: action.payload.name,
+                }
                 state.isAuth = true
                 state.loading = LoadingStatusEnum.SUCCEEDED
             }

@@ -2,6 +2,7 @@ import React from "react";
 import {Controller, useFormContext} from 'react-hook-form';
 
 export type Inputs = {
+    name?: string;
     email: string;
     password: string;
 };

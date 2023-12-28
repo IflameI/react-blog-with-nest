@@ -1,11 +1,11 @@
 import {rootReducer} from './reducers';
 import {configureStore} from "@reduxjs/toolkit";
-import {postApi} from "../../entities/post/model/services/postApi";
+import {articleApi} from "../../entities/article/model/services/articleApi";
 
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(postApi.middleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(articleApi.middleware),
     devTools: true,
 })
 

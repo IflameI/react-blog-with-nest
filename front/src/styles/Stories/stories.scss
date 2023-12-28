@@ -10,9 +10,11 @@
   @media (max-width: 767px) {
     padding: 40px 30px 0 30px;
   }
+
   &__container {
     max-width: 1300px;
   }
+
   &__row {
     @include flexbox();
     margin: 0 -10px;
@@ -20,6 +22,7 @@
       flex-wrap: wrap;
     }
   }
+
   &__column {
     flex: 0 1 50%;
     z-index: 0;
@@ -28,6 +31,7 @@
       flex: 0 1 100%;
     }
   }
+
   &__items {
     @include flexbox();
     margin: 0 -10px;
@@ -43,6 +47,7 @@
             height: 400px;
           }
         }
+
         .article__suptitle {
           max-width: none;
           margin-bottom: 10px;
@@ -52,15 +57,17 @@
     @media (max-width: 767px) {
       flex-wrap: wrap;
     }
+
     .article__item {
       @media (max-width: 767px) {
         flex: 0 1 100%;
       }
     }
   }
+
   &__item {
-    padding: 0 10px;
     flex: 0 1 50%;
+
     &:hover {
       .stories__suptitle {
         transition: all 0.3s;
@@ -68,22 +75,27 @@
       }
     }
   }
+
   &__wrap {
     margin-bottom: 15px;
   }
+
   &__img {
     img {
       object-fit: cover;
     }
   }
+
   &__imgMini {
     img {
       object-fit: cover;
     }
+
     @media (max-width: 992px) {
       display: none;
     }
   }
+
   &__time {
     max-width: 100px;
     line-height: 1.1;
@@ -93,6 +105,7 @@
       display: none;
     }
   }
+
   &__title {
     text-transform: uppercase;
     font-size: 22px;
@@ -104,6 +117,7 @@
     }
     margin-bottom: 25px;
   }
+
   &__suptitle {
     color: #000;
     font-weight: 700;
@@ -112,6 +126,7 @@
     line-height: 1.2;
     font-size: 15px;
   }
+
   &__infoItem {
     color: #000;
     @include flexbox();
@@ -120,17 +135,20 @@
     @media (max-width: 992px) {
       margin-bottom: 30px;
     }
+
     &:hover {
       color: #b80000;
       @include anim(0.3s, 0s);
     }
   }
+
   &__infoTitle {
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.1;
   }
+
   &__infoSupTitle {
     line-height: 1.1;
     text-overflow: ellipsis;
@@ -142,6 +160,7 @@
       display: none;
     }
   }
+
   &__info {
     max-width: 600px;
     @media (max-width: 1600px) {

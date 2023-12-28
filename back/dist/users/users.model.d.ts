@@ -6,6 +6,7 @@ interface UserCreationAttrs {
 }
 export declare class User extends Model<User, UserCreationAttrs> {
     id: number;
+    name: string;
     email: string;
     password: string;
     banned: boolean;

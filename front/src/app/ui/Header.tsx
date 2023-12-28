@@ -10,7 +10,7 @@ const Header: React.FC = () => {
                     <div className='header__top'>
                         <div className='header__left'>
                             <Link to={'/'}>
-                                <h1 className='header__title'>Next-blog</h1>
+                                <h1 className='header__title'>React-blog</h1>
                             </Link>
                         </div>
                         <HeaderFunctional/>

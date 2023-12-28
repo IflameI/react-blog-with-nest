@@ -8,27 +8,31 @@ const Loadable = <TProps, >(
 ): LoadableComponent<TProps> =>
         loadable(loadFn, {fallback: <Loader/>});
 
-const MainPage = Loadable(() => import("../../../modules/mainPage"))
+const Articles = Loadable(() => import("../../../modules/articles"))
 const LoginPage = Loadable(() => import("../../../modules/login"))
 const RegisterPage = Loadable(() => import("../../../modules/register"))
+const Article = Loadable(() => import("../../../modules/article"))
 
 export enum RoutesLabelEnum {
-    Main = 'Главная',
+    Articles = 'Главная',
     Register = 'Регистрация',
     Login = 'Авторизация',
+    Article = 'Статья'
 }
 
 export enum RoutesLinkEnum {
-    Main = '/',
+    Articles = '/*',
     Register = '/register',
-    Login = '/login'
+    Login = '/login',
+    Article = '/article/:id',
+    CreateArticle = '/create/article',
 }
 
 export const router: RouterType[] = [
     {
-        title: RoutesLabelEnum.Main,
-        path: RoutesLinkEnum.Main,
-        children: <MainPage/>
+        title: RoutesLabelEnum.Articles,
+        path: RoutesLinkEnum.Articles,
+        children: <Articles/>
     },
     {
         title: RoutesLabelEnum.Login,
@@ -39,5 +43,10 @@ export const router: RouterType[] = [
         title: RoutesLabelEnum.Register,
         path: RoutesLinkEnum.Register,
         children: <RegisterPage/>
+    },
+    {
+        title: RoutesLabelEnum.Article,
+        path: RoutesLinkEnum.Article,
+        children: <Article/>
     },
 ];

@@ -1,35 +1,35 @@
 import React from 'react';
-import {useGetMostLikesArticlesQuery} from "../../../entities/post/model/services/postApi";
 import {Loader} from "../../../shared";
 import {ArticlePreview, ArticlePreviewSmall} from "../../../entities/article";
+import {useGetMostLikesArticlesQuery} from "../../../entities/article/model/services/articleApi";
 
 export const TheBestArticles: React.FC = () => {
-    const {data: mostLikesPosts, isLoading} = useGetMostLikesArticlesQuery()
+    const {data: mostLikedArticles, isLoading} = useGetMostLikesArticlesQuery()
 
     return (
             <section className='theBest'>
                 <h3 className='theBest__title'>THE BEST</h3>
                 <div className='theBest__row'>
-                    {!isLoading && mostLikesPosts ? (
+                    {!isLoading && mostLikedArticles ? (
                             <>
                                 <div className='theBest__column theBest__column--big'>
-                                    {mostLikesPosts.slice(0, 1).map((item, index: number) => (
+                                    {mostLikedArticles.slice(0, 1).map((article, index: number) => (
                                             <ArticlePreview
-                                                    key={`${item.title}__${index}`}
-                                                    link={`article/${item.id}`}
-                                                    img={item.image}
-                                                    title={item.title}
-                                                    subtitle={item.content}
+                                                    key={`${article.title}__${index}`}
+                                                    link={`article/${article.id}`}
+                                                    img={article.image}
+                                                    title={article.title}
+                                                    subtitle={article.content}
                                                     smallHeight={true}
                                             />
                                     ))}
                                 </div>
-                                {mostLikesPosts.slice(1, 7).map((item, index: number) => (
-                                        <div className='theBest__column' key={`${index}__${item.title}`}>
+                                {mostLikedArticles.slice(1, 7).map((article, index: number) => (
+                                        <div className='theBest__column' key={`${index}__${article.title}`}>
                                             <ArticlePreviewSmall
-                                                    link={`article/${item.id}`}
-                                                    img={item.image}
-                                                    suptitle={item.title}
+                                                    link={`article/${article.id}`}
+                                                    img={article.image}
+                                                    suptitle={article.title}
                                                     widthImg='420px'
                                                     heightImg='300px'
                                             />

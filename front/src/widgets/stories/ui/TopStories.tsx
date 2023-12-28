@@ -1,7 +1,7 @@
 import React from 'react';
 import {Loader} from "../../../shared";
-import {useGetPopularArticlesQuery} from "../../../entities/post/model/services/postApi";
 import {ArticlePreview, ArticlePreviewSmall} from "../../../entities/article";
+import {useGetPopularArticlesQuery} from "../../../entities/article/model/services/articleApi";
 
 export const TopStories: React.FC = () => {
     const {data: popularArticles, isLoading} = useGetPopularArticlesQuery()
@@ -12,25 +12,25 @@ export const TopStories: React.FC = () => {
                 {!isLoading && popularArticles ? (
                         <>
                             <div className='stories__wrap'>
-                                {popularArticles.slice(0, 1).map((item, index: number) => (
+                                {popularArticles.slice(0, 1).map((article, index) => (
                                         <ArticlePreview
-                                                key={`${item.title}__${index}`}
-                                                link={`article/${item.id}`}
-                                                img={item.image}
-                                                title={item.title}
-                                                subtitle={item.content}
+                                                key={`${article.title}__${index}`}
+                                                link={`article/${article.id}`}
+                                                img={article.image}
+                                                title={article.title}
+                                                subtitle={article.content}
                                                 smallHeight={true}
                                         />
                                 ))}
                             </div>
                             <div className='stories__items'>
-                                {popularArticles.slice(1, 3).map((item, index: number) => (
+                                {popularArticles.slice(1, 3).map((article, index) => (
                                         <ArticlePreviewSmall
-                                                key={`${item.title}__${index}`}
+                                                key={`${article.title}__${index}`}
                                                 heightImg='300px'
-                                                img={item.image}
-                                                link={`article/${item.id}`}
-                                                suptitle={item.title}
+                                                img={article.image}
+                                                link={`article/${article.id}`}
+                                                suptitle={article.title}
                                                 widthImg='420px'
                                         />
                                 ))}

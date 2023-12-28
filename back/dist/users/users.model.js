@@ -22,6 +22,11 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Alex', description: 'Имя' }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
+    __metadata("design:type", String)
+], User.prototype, "name", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: 'user@mail.ru', description: 'Почтовый адрес' }),
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, unique: true, allowNull: false }),
     __metadata("design:type", String)

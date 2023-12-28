@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import React from 'react';
+import {NavLink, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {selectUserIsAuth} from "../../entities/user/model/selectors/user.selectors";
 import {logout} from "../../entities/user/model/reducers/user";
+import {RoutesLinkEnum} from "../routes/model";
 
 const HeaderFunctional: React.FC = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isAuth = useSelector(selectUserIsAuth)
-    const [modalActive, setModalActive] = useState<boolean>(false);
+
+    const onClickWriteArticleBtn = () => {
+        navigate(RoutesLinkEnum.CreateArticle)
+    }
 
     const onClickLogoutButton = () => {
         dispatch(logout())
@@ -18,7 +23,7 @@ const HeaderFunctional: React.FC = () => {
                 <div className='header__right'>
                     {isAuth && (
                             <div className='header__button'>
-                                <button onClick={() => setModalActive(true)} className='btn'>
+                                <button onClick={onClickWriteArticleBtn} className='btn'>
                                     Write article
                                 </button>
                             </div>
@@ -35,12 +40,6 @@ const HeaderFunctional: React.FC = () => {
                         )}
                     </div>
                 </div>
-                {/*<Modal active={modalActive} setModalActive={setModalActive}>*/}
-                {/*  <div className='modal__item'>*/}
-                {/*    <div className='modal__top'>Creation article</div>*/}
-                {/*    <ModalBody setModalActive={setModalActive} />*/}
-                {/*  </div>*/}
-                {/*</Modal>*/}
             </>
     );
 };

@@ -23,7 +23,8 @@ let AuthService = class AuthService {
     }
     async login(userDto) {
         const user = await this.validateUser(userDto);
-        return this.generateToken(user);
+        const { token } = await this.generateToken(user);
+        return { token, name: user.name, email: user.email };
     }
     async registration(userDto) {
         const candidate = await this.userService.getUserByEmail(userDto.email);
@@ -35,7 +36,7 @@ let AuthService = class AuthService {
         return this.generateToken(user);
     }
     async generateToken(user) {
-        const payload = { email: user.email, id: user.id, roles: user.roles };
+        const payload = { email: user.email, name: user.name, id: user.id, roles: user.roles };
         return {
             token: this.jwtService.sign(payload),
         };
