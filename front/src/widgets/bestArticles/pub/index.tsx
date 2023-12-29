@@ -13,22 +13,22 @@ export const TheBestArticles: React.FC = () => {
                     {!isLoading && mostLikedArticles ? (
                             <>
                                 <div className='theBest__column theBest__column--big'>
-                                    {mostLikedArticles.slice(0, 1).map((article, index: number) => (
+                                    {mostLikedArticles.slice(0, 1).map((article, index) => (
                                             <ArticlePreview
                                                     key={`${article.title}__${index}`}
                                                     link={`article/${article.id}`}
-                                                    img={article.image}
+                                                    img={article.image.data}
                                                     title={article.title}
                                                     subtitle={article.content}
                                                     smallHeight={true}
                                             />
                                     ))}
                                 </div>
-                                {mostLikedArticles.slice(1, 7).map((article, index: number) => (
+                                {mostLikedArticles.slice(1, 7).map((article, index) => (
                                         <div className='theBest__column' key={`${index}__${article.title}`}>
                                             <ArticlePreviewSmall
                                                     link={`article/${article.id}`}
-                                                    img={article.image}
+                                                    img={article.image.data}
                                                     suptitle={article.title}
                                                     widthImg='420px'
                                                     heightImg='300px'

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {ArticleType} from "../config/config";
+import {ArticleType, CreateArticleRequestType} from "../config/config";
 
 export const articleApi = createApi({
     reducerPath: 'articleApi',
@@ -21,6 +21,16 @@ export const articleApi = createApi({
             query: (id) => `/posts/arcticle/${id}`,
             transformResponse: (response: ArticleType) => response,
         }),
+        createArticle: builder.mutation<void, CreateArticleRequestType>({
+            query: (args) => ({
+                url: '/posts',
+                method: "POST",
+                body: args,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }),
+        }),
     }),
 })
 
@@ -29,5 +39,6 @@ export const {
     useGetPopularArticlesQuery,
     useGetRecentArticlesQuery,
     useGetArticleByIdQuery,
-    useGetMostLikesArticlesQuery
+    useGetMostLikesArticlesQuery,
+    useCreateArticleMutation
 } = articleApi

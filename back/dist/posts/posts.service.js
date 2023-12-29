@@ -21,7 +21,8 @@ let PostsService = class PostsService {
         this.postRepository = postRepository;
     }
     async createPost(dto) {
-        const post = await this.postRepository.create(dto);
+        const dtoWithBuffer = Object.assign(Object.assign({}, dto), { image: Buffer.from(dto.image, 'base64') });
+        const post = await this.postRepository.create(dtoWithBuffer);
         return post;
     }
     async getThreeArticles() {

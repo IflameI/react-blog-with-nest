@@ -16,7 +16,7 @@ export const TopStories: React.FC = () => {
                                         <ArticlePreview
                                                 key={`${article.title}__${index}`}
                                                 link={`article/${article.id}`}
-                                                img={article.image}
+                                                img={article.image.data}
                                                 title={article.title}
                                                 subtitle={article.content}
                                                 smallHeight={true}
@@ -28,7 +28,7 @@ export const TopStories: React.FC = () => {
                                         <ArticlePreviewSmall
                                                 key={`${article.title}__${index}`}
                                                 heightImg='300px'
-                                                img={article.image}
+                                                img={article.image.data}
                                                 link={`article/${article.id}`}
                                                 suptitle={article.title}
                                                 widthImg='420px'

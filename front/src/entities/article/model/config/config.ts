@@ -1,8 +1,18 @@
+export type CreateArticleRequestType = {
+    title: string;
+    content: string;
+    image: string;
+    author?: string;
+};
+
 export type ArticleType = {
     id: number;
     title: string;
     content: string;
-    image: string;
+    image: {
+        type: string;
+        data: Buffer
+    };
     createdAt: Date;
     updatedAt: string;
     likes?: number;

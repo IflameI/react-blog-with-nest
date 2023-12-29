@@ -1,16 +1,17 @@
+/// <reference types="node" />
 import { Model } from 'sequelize-typescript';
 interface PostCreationAttrs {
     title: string;
     content: string;
     author: string;
-    image: string;
+    image: Buffer;
     views: number;
 }
 export declare class Post extends Model<Post, PostCreationAttrs> {
     id: number;
     title: string;
     content: string;
-    image: string;
+    image: Buffer;
     views: number;
     likes: number;
     author: string;

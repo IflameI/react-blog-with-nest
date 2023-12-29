@@ -17,7 +17,7 @@ export const LastStories: React.FC = () => {
                                                 key={`${index}__${article.title}`}
                                                 infoTitle={article.title}
                                                 infoSupTitle={article.content}
-                                                img={article.image}
+                                                img={article.image.data}
                                                 time={article.updatedAt}
                                                 link={`article/${article.id}`}
                                         />

@@ -20,7 +20,7 @@ const Article: React.FC = () => {
                         </div>
                     </div>
                     <div className='internalStory__image'>
-                        <img width='800px' height='600px' src={article.image} alt='img'/>
+                        <img width='800px' height='600px' src={article.image.data} alt='img'/>
                     </div>
                     <p className='internalStory__text'>{article.content}</p>
                 </section>}

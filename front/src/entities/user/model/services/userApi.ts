@@ -45,6 +45,7 @@ export const loginUser = createAsyncThunk(
                 config
             )
             localStorage.setItem('Bearer', data.token)
+            localStorage.setItem('userName', data.name)
             return data
         } catch (error) {
             const message = error instanceof Error ? error.message : "Unknown error."

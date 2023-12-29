@@ -10,7 +10,6 @@ export const ArticleEditor = () => {
 
     const onEditorChange = function (a: string, editor: any) {
         setContent(a);
-        console.log(a)
         setText(editor.getContent({format: "text"}));
     };
 

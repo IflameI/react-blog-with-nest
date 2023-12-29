@@ -30,9 +30,9 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "content", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Название изображения', description: 'Название изображения' }),
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING }),
-    __metadata("design:type", String)
+    (0, swagger_1.ApiProperty)({ example: 'Изображение', description: 'Изображение' }),
+    (0, sequelize_typescript_1.Column)({ type: 'bytea' }),
+    __metadata("design:type", Buffer)
 ], Post.prototype, "image", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ example: '141', description: 'Количество просмотров' }),

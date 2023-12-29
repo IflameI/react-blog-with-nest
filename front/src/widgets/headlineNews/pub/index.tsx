@@ -14,7 +14,7 @@ export const HeadlineNews: React.FC = () => {
                                     <ArticlePreview
                                             key={`${article.title}__${index}`}
                                             link={`article/${article.id}`}
-                                            img={article.image}
+                                            img={article.image.data}
                                             title={article.title}
                                     />
                             ))

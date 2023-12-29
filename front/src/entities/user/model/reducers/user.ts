@@ -22,9 +22,13 @@ const user = createSlice({
             state.userData = {token: '', name: ''}
             state.error = null
             state.loading = LoadingStatusEnum.IDLE
+            localStorage.removeItem('Bearer')
+            localStorage.removeItem('userName')
+
         },
         logout(state) {
             localStorage.removeItem('Bearer')
+            localStorage.removeItem('userName')
             state.isAuth = false
             state.userData = {token: '', name: ''}
             state.error = null
