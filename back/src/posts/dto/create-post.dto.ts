@@ -1,6 +1,7 @@
 export class CreatePostDto {
     readonly title: string;
     readonly content: string;
+    readonly contentHtml: string;
     readonly image: string;
     readonly author: string = 'reactNews';
     readonly views: number = 0;

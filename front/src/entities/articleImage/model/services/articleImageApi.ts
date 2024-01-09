@@ -1,6 +1,6 @@
 import axios, {Method, ResponseType} from "axios";
 
-const API_KEY = 'SG_86dead30e9cb7195';
+const API_KEY = process.env.REACT_APP_SEGMIN_API_KEY;
 
 const rand = require('random-seed').create()
 
@@ -12,7 +12,7 @@ export const fetchGeneratedImage = async (
 
     const options = {
         method,
-        url: "https://api.segmind.com/v1/segmind-vega-rt-v1",
+        url: "https://api.segmind.com/v1/segmind-vega",
         headers: {
             "x-api-key": `${API_KEY}`,
             "Content-Type": "application/json",
@@ -20,8 +20,11 @@ export const fetchGeneratedImage = async (
         responseType,
         data: JSON.stringify({
             prompt: promptCall,
-            num_inference_steps: 4,
-            seed: rand(100000),
+            samples: 1,
+            negative_prompt: "(worst quality, low quality)",
+            num_inference_steps: 25,
+            scheduler: "UniPC",
+            seed: rand(999999999999999),
         }),
     };
 

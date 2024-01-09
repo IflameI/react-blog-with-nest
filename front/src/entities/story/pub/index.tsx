@@ -1,12 +1,14 @@
 import {formatDistanceToNow} from 'date-fns';
 import {NavLink} from 'react-router-dom';
 import React from "react";
+import {imgToBase64} from "../../../shared/utils/imgToBase64";
+import {imgEnum} from "../../../shared/model/config";
 
 interface IStory {
     time: string;
     infoTitle: string;
     infoSupTitle: string;
-    img: string;
+    img: Buffer;
     link: string;
 }
 
@@ -21,7 +23,7 @@ export const Story: React.FC<IStory> = ({img, infoSupTitle, infoTitle, time, lin
                         <p className='stories__infoSupTitle'>{infoSupTitle}</p>
                     </div>
                     <div className='stories__imgMini'>
-                        <img width='84px' height='84px' src={img} alt='news'/>
+                        <img width='84px' height='84px' src={imgToBase64(imgEnum.JPEG, img)} alt='news'/>
                     </div>
                 </div>
             </NavLink>

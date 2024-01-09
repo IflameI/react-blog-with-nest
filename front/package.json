@@ -19,6 +19,7 @@
     "classnames": "^2.3.1",
     "compose-function": "^3.0.3",
     "date-fns": "^2.25.0",
+    "js-base64": "^3.7.5",
     "markdown-to-jsx": "^7.3.2",
     "node-sass": "^9.0.0",
     "random-seed": "^0.3.0",

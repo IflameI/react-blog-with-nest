@@ -1,4 +1,5 @@
 import {imgEnum} from "../model/config";
+import {Base64} from 'js-base64';
 
 export const imgToBase64 = (imgType: imgEnum.JPG | imgEnum.PNG | imgEnum.JPEG, content: Buffer) => {
     let base64Type;
@@ -17,5 +18,5 @@ export const imgToBase64 = (imgType: imgEnum.JPG | imgEnum.PNG | imgEnum.JPEG, c
             return base64Type;
     }
 
-    return `${base64Type + btoa(String.fromCharCode(...new Uint8Array(content)))}`
+    return `${base64Type + Base64.fromUint8Array(new Uint8Array(content))}`
 }

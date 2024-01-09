@@ -1,6 +1,7 @@
 export type CreateArticleRequestType = {
     title: string;
     content: string;
+    contentHtml: string;
     image: string;
     author?: string;
 };
@@ -9,6 +10,7 @@ export type ArticleType = {
     id: number;
     title: string;
     content: string;
+    contentHtml: string;
     image: {
         type: string;
         data: Buffer

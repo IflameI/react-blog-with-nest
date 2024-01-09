@@ -1,5 +1,5 @@
 //<МИКСИНЫ>===============================================================================================
-@import 'mixins';
+@import '../../shared/styles/mixins';
 //</МИКСИНЫ>===============================================================================================
 
 //<ШРИФТЫ>===============================================================================================
@@ -64,12 +64,13 @@ body {
 
 //</ОСНОВНАЯ СЕТКА>===========================================================================================================
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
-@import 'Auth/Auth';
+@import 'src/entities/auth/styles/Auth/Auth';
 @import 'Header/Header';
-@import 'InternalStory/internalStory';
-@import 'ArticlePreview/articlePreview';
-@import 'Stories/stories';
+@import 'Article/Article';
+@import 'src/entities/article/styles/ArticlePreview/articlePreview';
+@import 'src/entities/story/styles/Stories/stories';
 @import 'TheBest/theBest';
+@import '../../widgets/createArticle/styles/CreateArticle/createArticle';
 
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 //<ОСНОВНОЙ БЛОК>====================================================================================================
@@ -177,6 +178,11 @@ h6 {
   background-color: transparent;
   border: 1px solid #fff;
   border-radius: 6px;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
   @media (min-width: $md1+px) {
     &:hover {
       @include anim(0.3s, 0s);
@@ -235,7 +241,7 @@ h6 {
   }
 }
 
-.auth__error {
+.input_error {
   color: #b80000;
   margin-bottom: 10px;
   display: block;

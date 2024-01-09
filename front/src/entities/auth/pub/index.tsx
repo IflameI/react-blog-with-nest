@@ -39,10 +39,10 @@ export const AuthForm: React.FC<IAuthForm> = ({loading, buttonText}) => {
                             )}
                     />
                     {errors.email && errors.email.type === 'required' && (
-                            <span className='auth__error'></span>
+                            <span className='input_error'></span>
                     )}
                     {errors.email && errors.email.type === 'pattern' && (
-                            <span className='auth__error'>{errors.email.message}</span>
+                            <span className='input_error'>{errors.email.message}</span>
                     )}
                 </div>
                 <div className='auth__input'>
@@ -61,13 +61,13 @@ export const AuthForm: React.FC<IAuthForm> = ({loading, buttonText}) => {
                             )}
                     />
                     {errors.password && errors.password.type === 'required' && (
-                            <span className='auth__error'>This field is required</span>
+                            <span className='input_error'>This field is required</span>
                     )}
                     {errors.password && errors.password.type === 'maxLength' && (
-                            <span className='auth__error'>16 characters maximum</span>
+                            <span className='input_error'>16 characters maximum</span>
                     )}
                     {errors.password && errors.password.type === 'minLength' && (
-                            <span className='auth__error'>At least 4 characters </span>
+                            <span className='input_error'>At least 4 characters </span>
                     )}
                 </div>
                 <div className='auth__button'>

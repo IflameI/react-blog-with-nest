@@ -4,6 +4,7 @@ import {Column, DataType, Model, Table} from 'sequelize-typescript';
 interface PostCreationAttrs {
     title: string;
     content: string;
+    contentHtml: string;
     author: string;
     image: Buffer;
     views: number;
@@ -22,6 +23,10 @@ export class Post extends Model<Post, PostCreationAttrs> {
     @ApiProperty({example: 'Описание поста', description: 'Содержание поста'})
     @Column({type: DataType.TEXT, allowNull: false})
     content: string;
+
+    @ApiProperty({example: 'Описание поста с тегами', description: 'Html разметка описания'})
+    @Column({type: DataType.TEXT, allowNull: false})
+    contentHtml: string;
 
     @ApiProperty({example: 'Изображение', description: 'Изображение'})
     @Column({type: 'bytea'})
