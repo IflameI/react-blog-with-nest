@@ -21,7 +21,7 @@ export const articleApi = createApi({
             query: (id) => `/posts/arcticle/${id}`,
             transformResponse: (response: ArticleType) => response,
         }),
-        createArticle: builder.mutation<void, CreateArticleRequestType>({
+        createArticle: builder.mutation<ArticleType, CreateArticleRequestType>({
             query: (args) => ({
                 url: '/posts',
                 method: "POST",
@@ -30,6 +30,8 @@ export const articleApi = createApi({
                     "Content-Type": "application/json",
                 },
             }),
+            transformResponse: (response: ArticleType) => response,
+
         }),
     }),
 })

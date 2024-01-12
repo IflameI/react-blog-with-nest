@@ -14,7 +14,6 @@ type Inputs = {
 
 export const LoginForm: React.FC = () => {
     const dispatch = useDispatch()
-
     const authLoading = useSelector(selectIsUserAuthLoading)
 
     const methods = useForm<Inputs>({

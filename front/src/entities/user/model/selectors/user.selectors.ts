@@ -14,6 +14,21 @@ export const selectUserToken = createSelector(
     (state) => state.userData.token,
 );
 
+export const selectUserName = createSelector(
+    selectUser,
+    (state) => state.userData.name,
+);
+
+export const selectUserError = createSelector(
+    selectUser,
+    (state) => state.error,
+);
+
+export const selectUserLoadingStatus = createSelector(
+    selectUser,
+    (state) => state.loading,
+);
+
 export const selectIsUserAuthSucceeded = createSelector(
     selectUser,
     (state) => state.loading === LoadingStatusEnum.SUCCEEDED,

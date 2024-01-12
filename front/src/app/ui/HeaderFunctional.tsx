@@ -9,7 +9,6 @@ const HeaderFunctional: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isAuth = useSelector(selectUserIsAuth)
-
     const onClickWriteArticleBtn = () => {
         navigate(RoutesLinkEnum.CreateArticle)
     }

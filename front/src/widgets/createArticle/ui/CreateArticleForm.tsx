@@ -1,9 +1,13 @@
 import {Controller, SubmitHandler, useFormContext} from "react-hook-form";
 import {GenerateImage} from "../../../features/generateImg";
 import {ArticleEditor} from "../../../entities/article/pub/ArticleEditor";
-import React, {FC} from "react";
+import React, {FC, useEffect} from "react";
 import {CreateArticleRequestType} from "../../../entities/article/model/config/config";
 import {useCreateArticleMutation} from "../../../entities/article/model/services/articleApi";
+import {useSelector} from "react-redux";
+import {selectUserName} from "../../../entities/user/model/selectors/user.selectors";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 type CreateArticleFormType = {
     imageResult: string | null;
@@ -11,7 +15,9 @@ type CreateArticleFormType = {
 }
 
 export const CreateArticleForm: FC<CreateArticleFormType> = ({imageResult, setImageResult}) => {
-    const [create, {isLoading}] = useCreateArticleMutation()
+    const [create, {isLoading, isSuccess, isError, data}] = useCreateArticleMutation()
+    const name = useSelector(selectUserName)
+    const navigate = useNavigate()
 
     const {watch, control, handleSubmit} = useFormContext<CreateArticleRequestType>();
 
@@ -24,7 +30,7 @@ export const CreateArticleForm: FC<CreateArticleFormType> = ({imageResult, setIm
 
         create({
             title: data.title,
-            author: 'anonymus',
+            author: name,
             content: data.content,
             contentHtml: data.contentHtml,
             image: imageResult ? imageResult.split(',')[1] : ''
@@ -32,6 +38,16 @@ export const CreateArticleForm: FC<CreateArticleFormType> = ({imageResult, setIm
     }
 
     const [watchedImage] = watch(['image']);
+
+    useEffect(() => {
+        if (isSuccess && data) {
+            toast.success('Article was successful created')
+            navigate(`/article/${data.id}`)
+        }
+        if (isError) {
+            toast.error('Article was not created. Please try again')
+        }
+    }, [data, isError, isSuccess, navigate])
 
     return (
             <div className='createArticleForm__item'>

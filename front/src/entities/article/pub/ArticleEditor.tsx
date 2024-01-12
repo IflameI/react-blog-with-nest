@@ -6,8 +6,7 @@ import {CreateArticleRequestType} from "../model/config/config";
 
 export const ArticleEditor = () => {
     const editorRef = useRef<TinyMCEEditor | null>(null);
-    const {control, setValue, watch, formState: {errors}} = useFormContext<CreateArticleRequestType>();
-    const [watchedContent] = watch(['contentHtml']);
+    const {control, setValue, formState: {errors}} = useFormContext<CreateArticleRequestType>();
 
     return (
             <>
@@ -18,22 +17,22 @@ export const ArticleEditor = () => {
                                 rules={{
                                     required: true,
                                 }}
-                                name="content"
+                                name="contentHtml"
                                 render={({field: {onChange, value}}) => (
                                         <Editor
+                                                apiKey={process.env.REACT_APP_TINY_API_KEY}
                                                 onInit={(evt, editor) => editorRef.current = editor}
                                                 onEditorChange={(a, e) => {
-                                                    onChange(e.getContent({format: "text"}))
-                                                    setValue('contentHtml', a)
+                                                    onChange(a)
+                                                    setValue('content', e.getContent({format: "text"}))
                                                 }}
-                                                value={watchedContent}
+                                                value={value}
                                                 init={{
                                                     height: '300px',
                                                     menubar: false,
                                                     plugins: [
                                                         'searchreplace',
                                                         'pagebreak',
-                                                        'rollbackHistory',
                                                     ],
                                                     toolbar:
                                                             "undo redo | formatselect | " +

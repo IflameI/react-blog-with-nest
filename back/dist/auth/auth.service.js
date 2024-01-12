@@ -29,7 +29,7 @@ let AuthService = class AuthService {
     async registration(userDto) {
         const candidate = await this.userService.getUserByEmail(userDto.email);
         if (candidate) {
-            throw new common_1.HttpException('Пользователь с таким email уже существует', common_1.HttpStatus.BAD_REQUEST);
+            throw new common_1.HttpException('This email already exist', common_1.HttpStatus.BAD_REQUEST);
         }
         const hashPassword = await bcrypt.hash(userDto.password, 5);
         const user = await this.userService.createUser(Object.assign(Object.assign({}, userDto), { password: hashPassword }));
@@ -43,11 +43,14 @@ let AuthService = class AuthService {
     }
     async validateUser(userDto) {
         const user = await this.userService.getUserByEmail(userDto.email);
+        if (!user) {
+            throw new common_1.HttpException('Unknown email', common_1.HttpStatus.BAD_REQUEST);
+        }
         const passwordEquals = await bcrypt.compare(userDto.password, user.password);
         if (user && passwordEquals) {
             return user;
         }
-        throw new common_1.UnauthorizedException({ message: 'Некорректный емайл или пароль ' });
+        throw new common_1.UnauthorizedException({ message: 'Invalid email or password' });
     }
 };
 AuthService = __decorate([

@@ -2,11 +2,12 @@ import {createSlice} from "@reduxjs/toolkit";
 import {userState} from "../config/config";
 import {loginUser, registerUser} from "../services/userApi";
 import {LoadingStatusEnum} from "../../../../shared/model/config";
+import {toast} from "react-toastify";
 
 const initialState: userState = {
     userData: {
         token: window.localStorage.Bearer,
-        name: '',
+        name: window.localStorage.userName,
     },
     error: null,
     loading: LoadingStatusEnum.IDLE,
@@ -41,6 +42,7 @@ const user = createSlice({
         })
         builder.addCase(registerUser.fulfilled, (state) => {
             state.loading = LoadingStatusEnum.SUCCEEDED
+            toast.success('Your registration was successful')
         })
         builder.addCase(registerUser.rejected, (state, action) => {
             if (action.error) {

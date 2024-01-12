@@ -1,6 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 import {userDataType} from "../config/config";
+import {ApiError} from "../../../../shared/model/config";
+
 
 const backendURL = 'http://127.0.0.1:3000'
 type responseType = {
@@ -24,7 +26,8 @@ export const registerUser = createAsyncThunk(
                 config
             )
         } catch (error) {
-            const message = error instanceof Error ? error.message : "Unknown error."
+            let apiError = error as ApiError
+            const message = apiError.response ? apiError.response.data.message : "Unknown error."
             return rejectWithValue(message)
         }
     }
@@ -48,7 +51,8 @@ export const loginUser = createAsyncThunk(
             localStorage.setItem('userName', data.name)
             return data
         } catch (error) {
-            const message = error instanceof Error ? error.message : "Unknown error."
+            let apiError = error as ApiError
+            const message = apiError.response ? apiError.response.data.message : "Unknown error."
             return rejectWithValue(message)
         }
     }

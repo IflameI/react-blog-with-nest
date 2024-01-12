@@ -11,3 +11,11 @@ export enum LoadingStatusEnum {
     SUCCEEDED = 'succeeded',
     FAILED = 'failed'
 }
+
+export interface ApiError {
+    response: {
+        data: {
+            message: string
+        }
+    }
+}
