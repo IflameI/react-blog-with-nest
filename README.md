@@ -1,8 +1,10 @@
 🎆react-blog-with-nest
 
-<a href = 'https://react-js-blog-nest.herokuapp.com/'>View Demo</a>
-
 react-blog-with-nest- реализация блога с полноценной регистрацией, авторизацией, написанием статьи.
+
+Архитектура:
+FSD: https://feature-sliced.design/ru/docs/get-started/overview <br>
+Module Federation: https://it-dev-journal.ru/articles/mikrofrontend-i-module-federation
 
 Stack:
 
@@ -14,9 +16,7 @@ axios
 
 redux
 
-redux-thunk
-
-classnames
+redux/toolkit
 
 react-hook-form
 
@@ -26,8 +26,4 @@ nest js
 
 PostgreSQL
 
-(Бэк не самый лучший, писал сам)
-
---------------------------------------------------
-
-<b>Demo лежит на heroku, иногда может зайти не с первого раза.</b>
+PS: Изображения сохраняются в db в blob формате, что является плохим и не масштабируемым решением
