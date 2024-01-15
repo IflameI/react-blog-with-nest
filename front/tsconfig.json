@@ -1,10 +1,19 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "esModuleInterop": true
+    },
+    "transpileOnly": true
+  },
+  "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2021",
+    "target": "esnext",
+    "outDir": "./build",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "ES6",
+      "DOM.Iterable"
     ],
     "baseUrl": "./src",
     "allowJs": true,
@@ -14,11 +23,12 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "es2022",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "isolatedModules": false,
+    "noEmit": false,
+    "emitDeclarationOnly": false,
     "jsx": "react-jsx"
   },
   "include": [
