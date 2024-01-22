@@ -4,6 +4,7 @@ import {useGetArticleByIdQuery} from "../../entities/article/model/services/arti
 import {imgToBase64} from "../../shared/utils/imgToBase64";
 import {imgEnum} from "../../shared/model/config";
 import Markdown from "markdown-to-jsx";
+import {isString} from "../../shared/utils/isString";
 
 const Article: React.FC = () => {
     const {id} = useParams()
@@ -26,7 +27,7 @@ const Article: React.FC = () => {
                         <img
                                 width='800px'
                                 height='600px'
-                                src={imgToBase64(imgEnum.JPEG, article.image.data)}
+                                src={isString(article.image) ? article.image : imgToBase64(imgEnum.JPEG, article.image.data)}
                                 alt='img'
                         />
                     </div>

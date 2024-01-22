@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Loader} from "../../../shared";
 import {ArticlePreview, ArticlePreviewSmall} from "../../../entities/article";
 import {useGetMostLikesArticlesQuery} from "../../../entities/article/model/services/articleApi";
+import {isString} from "../../../shared/utils/isString";
+import {imgToBase64} from "../../../shared/utils/imgToBase64";
+import {imgEnum} from "../../../shared/model/config";
 
 export const TheBestArticles: React.FC = () => {
-    const {data: mostLikedArticles, isLoading} = useGetMostLikesArticlesQuery()
+    const {data: mostLikedArticles, isLoading, refetch} = useGetMostLikesArticlesQuery()
+
+    useEffect(() => {
+        if (mostLikedArticles && mostLikedArticles.length) {
+            refetch()
+        }
+    }, [])
 
     return (
             <section className='theBest'>
@@ -17,7 +26,7 @@ export const TheBestArticles: React.FC = () => {
                                             <ArticlePreview
                                                     key={`${article.title}__${index}`}
                                                     link={`article/${article.id}`}
-                                                    img={article.image.data}
+                                                    img={isString(article.image) ? article.image : imgToBase64(imgEnum.JPEG, article.image.data)}
                                                     title={article.title}
                                                     subtitle={article.content}
                                                     smallHeight={true}
@@ -28,7 +37,7 @@ export const TheBestArticles: React.FC = () => {
                                         <div className='theBest__column' key={`${index}__${article.title}`}>
                                             <ArticlePreviewSmall
                                                     link={`article/${article.id}`}
-                                                    img={article.image.data}
+                                                    img={isString(article.image) ? article.image : imgToBase64(imgEnum.JPEG, article.image.data)}
                                                     suptitle={article.title}
                                                     widthImg='420px'
                                                     heightImg='300px'

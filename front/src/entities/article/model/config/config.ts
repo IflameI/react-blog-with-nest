@@ -14,7 +14,7 @@ export type ArticleType = {
     image: {
         type: string;
         data: Buffer
-    };
+    } | string;
     createdAt: Date;
     updatedAt: string;
     likes?: number;

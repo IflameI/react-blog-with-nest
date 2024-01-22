@@ -2,12 +2,13 @@ import {Link} from 'react-router-dom';
 import React from "react";
 import {imgEnum} from "../../../shared/model/config";
 import {imgToBase64} from "../../../shared/utils/imgToBase64";
+import {isString} from "../../../shared/utils/isString";
 
 interface IArticlePreviewSmall {
     link: string;
     widthImg: string;
     heightImg: string;
-    img: Buffer;
+    img: Buffer | string;
     suptitle: string;
     badge?: string;
 }
@@ -24,7 +25,8 @@ export const ArticlePreviewSmall: React.FC<IArticlePreviewSmall> = ({
             <Link to={link}>
                 <div className='article__item'>
                     <div className='article__img'>
-                        <img width={widthImg} height={heightImg} src={imgToBase64(imgEnum.JPEG, img)} alt='news img'/>
+                        <img width={widthImg} height={heightImg}
+                             src={isString(img) ? String(img) : imgToBase64(imgEnum.JPEG, img)} alt='news img'/>
                         {badge && <div className='article__badge'>{badge}</div>}
                     </div>
                     <div className='article__suptitle'>{suptitle}</div>

@@ -6,7 +6,7 @@ interface PostCreationAttrs {
     content: string;
     contentHtml: string;
     author: string;
-    image: Buffer;
+    image: Buffer | string;
     views: number;
 }
 

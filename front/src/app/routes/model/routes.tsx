@@ -22,8 +22,8 @@ export enum RoutesLabelEnum {
 
 export enum RoutesLinkEnum {
     Articles = '/*',
-    Register = '/register',
-    Login = '/login',
+    Register = '/register/*',
+    Login = '/login/*',
     Article = '/article/:id',
     CreateArticle = '/create/article',
 }
